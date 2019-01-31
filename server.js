@@ -8,6 +8,8 @@ const strava = require('strava-v3');
 const polyline = require('@mapbox/polyline');
 const passport = require('./config/passport');
 
+const router = require('./routes/index');
+
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 app.use(
@@ -21,9 +23,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get('/', (req, res) => {
-  res.render('index', { user: req.user });
-});
+app.use('/', router);
 
 app.get('/account', ensureAuthenticated, (req, res) => {
   const { id, token } = req.user;
@@ -71,10 +71,6 @@ app.get('/activity/:activityId', ensureAuthenticated, (req, res) => {
   });
 });
 
-app.get('/login', (req, res) => {
-  res.render('login', { user: req.user });
-});
-
 app.get(
   '/auth/strava',
   passport.authenticate('strava', { scope: ['activity:read'] }),
@@ -88,11 +84,6 @@ app.get(
     res.redirect('/');
   }
 );
-
-app.get('/logout', (req, res) => {
-  req.logout();
-  res.redirect('/');
-});
 
 app.listen(3000);
 
