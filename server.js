@@ -7,10 +7,10 @@ const app = express();
 const passport = require('passport');
 const StravaStrategy = require('passport-strava-oauth2').Strategy;
 const strava = require('strava-v3');
+const polyline = require('@mapbox/polyline');
 
 const STRAVA_CLIENT_ID = process.env.STRAVA_CLIENT_ID;
 const STRAVA_CLIENT_SECRET = process.env.STRAVA_CLIENT_SECRET;
-const STRAVA_CLIENT_TOKEN = process.env.STRAVA_ACCESS_TOKEN;
 
 passport.serializeUser((user, done) => {
   done(null, user);
@@ -81,6 +81,7 @@ app.get('/activity/:activityId', ensureAuthenticated, (req, res) => {
     limits
   ) {
     if (!err) {
+      console.log(polyline.decode(payload.map.polyline));
       res.render('activity', {
         user: req.user,
         activity: payload
