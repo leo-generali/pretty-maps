@@ -1,4 +1,8 @@
-extends default
+extends layout
 
 block content
-  p Does this work?
+  unless user
+    p Welcome! Please log in.
+  else
+    p Hello #{user.displayName}
+

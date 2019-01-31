@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  img.src(src=`${user.photos[0].value}`, alt="")
+  p ID #{user.id}
+  p Name #{user.displayName}
+  p City #{user._json.city}
