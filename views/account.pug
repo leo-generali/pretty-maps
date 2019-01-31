@@ -5,3 +5,6 @@ block content
   p ID #{user.id}
   p Name #{user.displayName}
   p City #{user._json.city}
+
+  each activity in activities
+    p= activity.name

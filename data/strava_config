@@ -1,7 +1,0 @@
-
-{
-    "access_token"    :"3b7862c690c1b29fe49b4c31b027226082c04f54"
-    , "client_id"     :"25633"
-    , "client_secret" :"fd9eb901b1ab3745cd2b39707137377382d0cab5"
-    , "redirect_uri"  :"http://127.0.0.1:3000/auth/strava/callback"
-}

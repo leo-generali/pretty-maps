@@ -6,9 +6,12 @@ const path = require('path');
 const app = express();
 const passport = require('passport');
 const StravaStrategy = require('passport-strava-oauth2').Strategy;
+const strava = require('strava-v3');
+const axios = require('axios');
 
 const STRAVA_CLIENT_ID = process.env.STRAVA_CLIENT_ID;
 const STRAVA_CLIENT_SECRET = process.env.STRAVA_CLIENT_SECRET;
+const STRAVA_CLIENT_TOKEN = process.env.STRAVA_ACCESS_TOKEN;
 
 passport.serializeUser((user, done) => {
   done(null, user);
@@ -48,7 +51,26 @@ app.get('/', (req, res) => {
 });
 
 app.get('/account', ensureAuthenticated, (req, res) => {
-  res.render('account', { user: req.user });
+  const { id, token } = req.user;
+
+  strava.athlete.listActivities({ access_token: token }, function(
+    err,
+    payload,
+    limits
+  ) {
+    if (!err) {
+      res.render('account', {
+        activities: payload,
+        user: req.user
+      });
+    } else {
+      console.log(err);
+      res.render('account', {
+        activities: [],
+        user: req.user
+      });
+    }
+  });
 });
 
 app.get('/login', (req, res) => {
@@ -57,7 +79,7 @@ app.get('/login', (req, res) => {
 
 app.get(
   '/auth/strava',
-  passport.authenticate('strava', { scope: ['public'] }),
+  passport.authenticate('strava', { scope: ['activity:read'] }),
   (req, res) => {}
 );
 
