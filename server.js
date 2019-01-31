@@ -4,34 +4,9 @@ const express = require('express');
 const session = require('express-session');
 const path = require('path');
 const app = express();
-const passport = require('passport');
-const StravaStrategy = require('passport-strava-oauth2').Strategy;
 const strava = require('strava-v3');
 const polyline = require('@mapbox/polyline');
-
-const STRAVA_CLIENT_ID = process.env.STRAVA_CLIENT_ID;
-const STRAVA_CLIENT_SECRET = process.env.STRAVA_CLIENT_SECRET;
-
-passport.serializeUser((user, done) => {
-  done(null, user);
-});
-
-passport.deserializeUser((obj, done) => {
-  done(null, obj);
-});
-
-passport.use(
-  new StravaStrategy(
-    {
-      clientID: STRAVA_CLIENT_ID,
-      clientSecret: STRAVA_CLIENT_SECRET,
-      callbackURL: 'http://127.0.0.1:3000/auth/strava/callback'
-    },
-    (accessToken, refreshToken, profile, done) => {
-      process.nextTick(() => done(null, profile));
-    }
-  )
-);
+const passport = require('./config/passport');
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
@@ -39,7 +14,8 @@ app.use(
   session({
     secret: 'pretty-strava-maps',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    maxAge: 86400000
   })
 );
 app.use(passport.initialize());
