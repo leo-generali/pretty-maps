@@ -8,4 +8,5 @@ block content
 
   each activity in activities
     a(href=`activity/${activity.id}`)
-      p= activity.name
+      - var thumb = activity.map.summary_polyline ? "✅" : "🔴"
+      p= `${activity.name} ${thumb}`
