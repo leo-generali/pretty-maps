@@ -7,4 +7,5 @@ block content
   p City #{user._json.city}
 
   each activity in activities
-    p= activity.name
+    a(href=`activity/${activity.id}`)
+      p= activity.name

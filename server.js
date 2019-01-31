@@ -7,7 +7,6 @@ const app = express();
 const passport = require('passport');
 const StravaStrategy = require('passport-strava-oauth2').Strategy;
 const strava = require('strava-v3');
-const axios = require('axios');
 
 const STRAVA_CLIENT_ID = process.env.STRAVA_CLIENT_ID;
 const STRAVA_CLIENT_SECRET = process.env.STRAVA_CLIENT_SECRET;
@@ -68,6 +67,28 @@ app.get('/account', ensureAuthenticated, (req, res) => {
       res.render('account', {
         activities: [],
         user: req.user
+      });
+    }
+  });
+});
+
+app.get('/activity/:activityId', ensureAuthenticated, (req, res) => {
+  const { id, token } = req.user;
+  const { activityId } = req.params;
+  strava.activities.get({ id: activityId, access_token: token }, function(
+    err,
+    payload,
+    limits
+  ) {
+    if (!err) {
+      res.render('activity', {
+        user: req.user,
+        activity: payload
+      });
+    } else {
+      res.render('activity', {
+        user: req.user,
+        activity: null
       });
     }
   });
