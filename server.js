@@ -17,7 +17,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use('/', router);
 
-express.static(path.join(__dirname, 'public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get(
   '/auth/strava',
