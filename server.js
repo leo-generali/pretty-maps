@@ -9,8 +9,6 @@ const passport = require('./config/passport');
 
 const router = require('./routes/index');
 
-const sassMiddleware = require('node-sass-middleware');
-
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -18,16 +16,6 @@ app.use(session);
 app.use(passport.initialize());
 app.use(passport.session());
 app.use('/', router);
-
-app.use(
-  sassMiddleware({
-    src: __dirname + '/assets/stylesheets',
-    dest: __dirname + '/public/stylesheets',
-    debug: true,
-    indentedSyntax: false,
-    outputStyle: 'compressed'
-  })
-);
 
 express.static(path.join(__dirname, 'public'));
 
@@ -45,4 +33,4 @@ app.get(
   }
 );
 
-app.listen(3000);
+app.listen(5000);
