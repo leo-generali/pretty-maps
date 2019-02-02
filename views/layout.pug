@@ -1,10 +1,11 @@
 html(lang="en")
   head
-    link(href="/dist/App.css", text="text/css", rel="stylesheet")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
     title Document
+    link(href="/dist/App.css", text="text/css", rel="stylesheet")
+    block styles
   body.container
     unless user
       p
@@ -20,4 +21,4 @@ html(lang="en")
         a(href="/logout") Log Out
     block content
     block scripts
-      script(src="/dist/App.bundle.js")
+    script(src="/dist/App.bundle.js")

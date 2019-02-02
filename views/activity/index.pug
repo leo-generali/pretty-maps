@@ -7,6 +7,8 @@ block content
   p City #{user._json.city}
 
   each activity in activities
-    a(href=`activity/${activity.id}`)
-      - var thumb = activity.map.summary_polyline ? "✅" : "🔴"
-      p= `${activity.name} ${thumb}`
+    if activity.map.summary_polyline
+      a(href=`activity/${activity.id}`)
+        p=activity.name
+    unless activity.map.summary_polyline
+        p=activity.name

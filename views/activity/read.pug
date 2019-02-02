@@ -1,6 +1,14 @@
 extends ../layout
 
+block styles
+  link(rel="stylesheet", href="https://api.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.css")
+
+block scripts
+  script(src="https://api.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.js")
+  script(src="/dist/MapEditor.bundle.js")
+
 block content
   p=activity.name
   p=activity.distance
-  p=activity.map.polyline
+  div(style={height: "500px", width: "500px"})#map-container(data-coords=coordinates)(data-center=center)
+  a#downloadLink(href="", download="map.png") Download ↓

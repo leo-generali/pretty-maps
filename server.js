@@ -13,8 +13,10 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(session);
+
 app.use(passport.initialize());
 app.use(passport.session());
+
 app.use('/', router);
 
 app.use(express.static(path.join(__dirname, 'public')));
