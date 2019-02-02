@@ -1,6 +1,6 @@
+const getBounds = require('getboundingbox');
 const strava = require('strava-v3');
 const polyline = require('@mapbox/polyline');
-const Region = require('../models/region');
 
 exports.index = (req, res) => {
   const { id, token } = req.user;
@@ -34,13 +34,13 @@ exports.read = (req, res) => {
   ) {
     if (!err) {
       const geoJSON = polyline.toGeoJSON(payload.map.polyline);
-      const region = new Region(geoJSON.coordinates);
+      const bounds = getBounds(geoJSON.coordinates);
 
       res.render('activity/read', {
         user: req.user,
         activity: payload,
         coordinates: geoJSON.coordinates,
-        center: region.centroid()
+        bounds: bounds
       });
     } else {
       res.render('activity/read', {
