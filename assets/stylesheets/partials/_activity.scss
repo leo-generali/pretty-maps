@@ -7,3 +7,22 @@
     height: 500px;
   }
 }
+
+.map-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
+
+.map-loading-state {
+  width: 500px;
+  height: 500px;
+  background-color: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__text {
+    flex-direction: column;
+  }
+}

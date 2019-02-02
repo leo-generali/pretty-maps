@@ -1,16 +1,23 @@
 extends ../layout
 
 block styles
-  link(rel="stylesheet", href="https://api.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.css")
+  unless process.env.NODE_ENV === 'development'
+    link(rel="stylesheet", href="https://api.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.css")
 
 block scripts
-  script(src="https://api.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.js")
+  unless process.env.NODE_ENV === 'development'
+    script(src="https://api.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.js")
   script(src="/dist/MapEditor.bundle.js")
 
 block content
   p=activity.name
   p=activity.distance
-  div.map-container
-    div#map-container.map-container__map(data-coords=coordinates)(data-bounds=bounds)
-  img#map-image.src(src="", alt="")
+  .map-container
+    #map-container.map-container__map(data-coords=coordinates)(data-bounds=bounds)
+  unless process.env.NODE_ENV === 'development'
+    include partials/loading-state
+  if process.env.NODE_ENV === 'development'
+    img#map-image.map-image(src='/images/dev-map.png', alt=`Map of your ${activity.name} activity`)
+  else
+    img#map-image.map-image.src(src="", alt=`Map of your ${activity.name} activity`)
   a#downloadLink(href="", download="map.png") Download ↓

@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "prod": "node ./server.js",
-    "watch": "nodemon ./server.js --ignore public/",
+    "watch": "NODE_ENV=development nodemon ./server.js --ignore public/",
     "start": "concurrently \"yarn watch\" \"yarn assets\" --names \"💻,📦\" --prefix name",
     "assets": "webpack -w --display-max-modules 0 --mode=production",
     "build_assets": "webpack"

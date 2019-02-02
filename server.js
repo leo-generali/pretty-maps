@@ -9,17 +9,14 @@ const passport = require('./config/passport');
 
 const router = require('./routes/index');
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(session);
-
 app.use(passport.initialize());
 app.use(passport.session());
-
 app.use('/', router);
-
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.get(
   '/auth/strava',
@@ -35,4 +32,8 @@ app.get(
   }
 );
 
-app.listen(3000);
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
