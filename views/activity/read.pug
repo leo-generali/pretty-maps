@@ -10,5 +10,7 @@ block scripts
 block content
   p=activity.name
   p=activity.distance
-  div(style={height: "500px", width: "500px"})#map-container(data-coords=coordinates)(data-bounds=bounds)
+  div.map-container
+    div#map-container.map-container__map(data-coords=coordinates)(data-bounds=bounds)
+  img#map-image.src(src="", alt="")
   a#downloadLink(href="", download="map.png") Download ↓

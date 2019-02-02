@@ -20,7 +20,6 @@ const run = () => {
     container: 'map-container',
     style: 'mapbox://styles/leogenerali/cjrmbdavm16fr2srwjg66llb1',
     center: center,
-    attributionControl: false,
     interactive: false,
     zoom: 12,
     preserveDrawingBuffer: true
@@ -31,6 +30,11 @@ const run = () => {
     map.fitBounds([[bounds.minX, bounds.minY], [bounds.maxX, bounds.maxY]], {
       padding: { top: 50, bottom: 50, left: 50, right: 50 }
     });
+  });
+
+  map.once('idle', () => {
+    const imageURI = map.getCanvas().toDataURL('image/png');
+    document.querySelector('#map-image').setAttribute('src', imageURI);
   });
 
   document.querySelector('#downloadLink').addEventListener('click', function() {

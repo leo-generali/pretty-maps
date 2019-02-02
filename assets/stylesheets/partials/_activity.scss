@@ -1,0 +1,9 @@
+.map-container {
+  position: absolute;
+  left: -9999px;
+
+  &__map {
+    width: 500px;
+    height: 500px;
+  }
+}
