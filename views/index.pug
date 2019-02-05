@@ -5,18 +5,5 @@ block content
     p Welcome! Please log in yee haw!
   else
     p Hello #{user.displayName}
-  main
-    section.app
-      section.app__input
-        h2.app__heading What you've done
-          .js-items(aria-live='polite', aria-label='A list of items you have done')
-        form.new-item.boilerform.js-form(class='[ ] [ ] [ ]')
-          .boilerform
-            label.new-item__label.c-label(for='new-item-field', class='[ ] [ ]') Add a new item
-            input#new-item-field.new-item__details.c-input-field(type='text', class='[ ] [ ]', autocomplete='off')
-            button.c-button.new-item__button(class='[ ] [ ]') Save
-      aside.app__status
-        .app__decor.js-count(class='[ ] [ ]', aria-hidden='true')
-          small You've done
-          span 1
-          small things today 😢
+  input.js-input
+  .js-output

@@ -1,3 +1,3 @@
 export default {
-  items: ['I made this', 'Another thingsssss']
+  message: 'hello world!'
 };
