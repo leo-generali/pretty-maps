@@ -2,8 +2,6 @@ import PubSub from '../modules/pubsub';
 
 class Store {
   constructor(params) {
-    console.log(params);
-
     const self = this;
 
     self.actions = {};
@@ -20,25 +18,7 @@ class Store {
       self.mutations = params.mutations;
     }
 
-    // const handler = {
-    //   set: function(state, key, value) {
-    //     state[key] = value;
-
-    //     console.log(`statechange: ${key}, ${value}`);
-
-    //     self.events.publish('stateChange', self.state);
-
-    //     if (self.status !== 'mutation') {
-    //       console.warn(`You should use a mutation to set ${key}`);
-    //     }
-
-    //     self.status = 'resting';
-
-    //     return true;
-    //   }
-    // };
-
-    self.state = new Proxy(params.state || {}, {
+    const proxyHandler = {
       set: function(state, key, value) {
         state[key] = value;
 
@@ -54,7 +34,9 @@ class Store {
 
         return true;
       }
-    });
+    };
+
+    self.state = new Proxy(params.state || {}, proxyHandler);
   }
 
   dispatch(actionKey, payload) {

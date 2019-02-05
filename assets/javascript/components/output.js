@@ -1,7 +1,7 @@
 import Component from '../modules/component';
 import store from '../store/index';
 
-export default class Output extends Component {
+class Output extends Component {
   constructor() {
     super({
       store,
@@ -17,4 +17,4 @@ export default class Output extends Component {
   }
 }
 
-// export default Output;/
+export default Output;
