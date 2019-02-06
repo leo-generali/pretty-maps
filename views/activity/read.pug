@@ -12,7 +12,7 @@ block scripts
 block content
   p=activity.name
   .map-container
-    #map-container.map-container__map(data-coords=coordinates)(data-bounds=bounds)(data-distance=activity.distance)
+    #map-container.map-container__map(data-coords=coordinates)(data-bounds=bounds)(data-distance=activity.distance)(data-time=activity.moving_time)
   .map-form
     label(for='distance-unit') Unit/Measurement:
     select#distance-unit.js-unit-select

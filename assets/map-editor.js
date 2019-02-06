@@ -1,4 +1,5 @@
 import { $ } from './javascript/modules/bling';
+import { secondsToHHMMSS } from './javascript/modules/helpers';
 import { run } from './javascript/activity';
 import MapForm from './javascript/components/map-option-form';
 import store from './javascript/store/index';
@@ -11,6 +12,7 @@ unitSelectElem.addEventListener('change', function() {
 const form = new MapForm(
   $('.map-container__map').getAttribute('data-distance')
 );
+
 form.render();
 
 run();

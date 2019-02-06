@@ -1,4 +1,4 @@
-import { roundToTwo } from '../modules/helper';
+import { roundToTwo } from '../modules/helpers';
 import Component from '../modules/component';
 import store from '../store/index';
 
