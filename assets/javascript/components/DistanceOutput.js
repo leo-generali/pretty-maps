@@ -2,7 +2,7 @@ import { roundToTwo } from '../modules/helpers';
 import Component from '../modules/component';
 import store from '../store/index';
 
-class MapForm extends Component {
+class distanceOutput extends Component {
   constructor(meters) {
     super({
       store,
@@ -24,4 +24,4 @@ class MapForm extends Component {
   }
 }
 
-export default MapForm;
+export default distanceOutput;
