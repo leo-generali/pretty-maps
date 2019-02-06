@@ -1,4 +1,4 @@
-.map-container {
+.mapbox-hidden {
   position: absolute;
   left: -9999px;
 
@@ -8,10 +8,15 @@
   }
 }
 
-.map-image {
+.map-container {
   width: 100%;
   max-width: 500px;
   height: auto;
+  position: relative;
+
+  &__canvas-layer {
+    position: absolute;
+  }
 }
 
 .map-loading-state {

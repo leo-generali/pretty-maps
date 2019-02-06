@@ -11,11 +11,11 @@ unitSelectElem.addEventListener('change', function() {
 });
 
 const distanceOutputInstance = new DistanceOutput(
-  $('.map-container__map').getAttribute('data-distance')
+  $('.mapbox-hidden__map').getAttribute('data-distance')
 );
 
 const paceOutputInstance = new PaceOutput(
-  $('.map-container__map').getAttribute('data-time')
+  $('.mapbox-hidden__map').getAttribute('data-time')
 );
 
 distanceOutputInstance.render();

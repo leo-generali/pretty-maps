@@ -2,7 +2,7 @@ import { roundToTwo } from '../modules/helpers';
 import Component from '../modules/component';
 import store from '../store/index';
 
-class distanceOutput extends Component {
+class DistanceOutput extends Component {
   constructor(meters) {
     super({
       store,
@@ -10,6 +10,8 @@ class distanceOutput extends Component {
     });
 
     this.meters = meters;
+    this.canvas = document.querySelector('.map-container__canvas-layer');
+    this.canvasContext = this.canvas.getContext('2d');
   }
 
   render() {
@@ -18,10 +20,12 @@ class distanceOutput extends Component {
     const outputDistance = isMetric
       ? self.meters * 0.001
       : self.meters * 0.000621371;
-    const outputUnit = isMetric ? 'kilometers' : 'miles';
 
-    self.element.innerHTML = `${roundToTwo(outputDistance)} ${outputUnit}`;
+    this.canvasContext.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.canvasContext.font = '30px serif';
+    this.canvasContext.fillStyle = 'white';
+    this.canvasContext.fillText(roundToTwo(outputDistance), 10, 50);
   }
 }
 
-export default distanceOutput;
+export default DistanceOutput;

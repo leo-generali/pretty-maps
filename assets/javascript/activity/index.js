@@ -31,11 +31,11 @@ const run = () => {
     map.once('idle', () => {
       const imageURI = map.getCanvas().toDataURL('image/png');
       $('.map-loading-state').parentNode.removeChild($('.map-loading-state'));
-      $('#map-image').setAttribute('src', imageURI);
+      $('.js-map-img').setAttribute('src', imageURI);
     });
 
     $('#downloadLink').addEventListener('click', function() {
-      var img = map.getCanvas().toDataURL('image/png');
+      const img = map.getCanvas().toDataURL('image/png');
       this.href = img;
     });
   }

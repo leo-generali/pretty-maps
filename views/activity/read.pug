@@ -1,29 +1,19 @@
 extends ../layout
 
 block styles
-  unless process.env.NODE_ENV === 'development'
-    link(rel="stylesheet", href="https://api.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.css")
+  link(rel="stylesheet", href="https://api.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.css")
 
 block scripts
-  unless process.env.NODE_ENV === 'development'
-    script(src="https://api.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.js")
+  script(src="https://api.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.js")
   script(src="/dist/MapEditor.bundle.js")
 
 block content
   p=activity.name
+  .mapbox-hidden
+    #map-container.mapbox-hidden__map(data-coords=coordinates)(data-bounds=bounds)(data-distance=activity.distance)(data-time=activity.moving_time)
+  include partials/map-form
+  include partials/loading-state
   .map-container
-    #map-container.map-container__map(data-coords=coordinates)(data-bounds=bounds)(data-distance=activity.distance)(data-time=activity.moving_time)
-  .map-form
-    label(for='distance-unit') Unit/Measurement:
-    select#distance-unit.js-unit-select
-      option(selected) Miles
-      option Kilometers
-    p.js-unit-type
-    p.js-pace
-  unless process.env.NODE_ENV === 'development'
-    include partials/loading-state
-  if process.env.NODE_ENV === 'development'
-    img#map-image.map-image(src='/images/dev-map.png', alt=`Map of your ${activity.name} activity`)
-  else
-    img#map-image.map-image.src(src="", alt=`Map of your ${activity.name} activity`)
+    canvas.map-container__canvas-layer
+    img.map-container__map-layer.js-map-img(src="", alt=`Map of your ${activity.name} activity`)
   a#downloadLink(href="", download="map.png") Download ↓
