@@ -62,7 +62,7 @@ class Store {
     const self = this;
 
     if (typeof self.mutations[mutationKey] !== 'function') {
-      console.error(`Mutation "${mutationKey}" does not exist!`);
+      console.log(`Mutation "${mutationKey}" doesn't exist`);
       return false;
     }
 
@@ -71,6 +71,8 @@ class Store {
     const newState = self.mutations[mutationKey](self.state, payload);
 
     self.state = Object.assign(self.state, newState);
+
+    return true;
   }
 }
 

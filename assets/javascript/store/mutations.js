@@ -1,6 +1,7 @@
 const mutations = {
-  updateInput(state, payload) {
-    state.message = payload;
+  updateUnit(state, payload) {
+    state.isMetric = payload;
+
     return state;
   }
 };

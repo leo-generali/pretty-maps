@@ -1,5 +1,6 @@
 const state = {
-  message: 'hello world!'
+  isMetric: false,
+  distance: ''
 };
 
 export default state;

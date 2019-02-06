@@ -4,16 +4,14 @@ import { mapConfig } from './config';
 
 const run = () => {
   const bounds = JSON.parse($('#map-container').dataset.bounds);
-
   const coords = JSON.parse($('#map-container').dataset.coords);
 
   const avgX = (bounds.maxX + bounds.minX) / 2;
   const avgY = (bounds.maxY + bounds.minY) / 2;
   const center = [avgX, avgY];
 
-  mapboxgl.accessToken = MAPBOX_ACCESS_KEY;
-
   if (typeof mapboxgl !== 'undefined') {
+    mapboxgl.accessToken = MAPBOX_ACCESS_KEY;
     const map = new mapboxgl.Map({
       container: 'map-container',
       style: 'mapbox://styles/leogenerali/cjrmbdavm16fr2srwjg66llb1',

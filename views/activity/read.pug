@@ -11,9 +11,14 @@ block scripts
 
 block content
   p=activity.name
-  p=activity.distance
   .map-container
-    #map-container.map-container__map(data-coords=coordinates)(data-bounds=bounds)
+    #map-container.map-container__map(data-coords=coordinates)(data-bounds=bounds)(data-distance=activity.distance)
+  .map-form
+    label(for='distance-unit') Unit/Measurement:
+    select#distance-unit.js-unit-select
+      option(selected) Miles
+      option Kilometers
+    p.js-unit-type
   unless process.env.NODE_ENV === 'development'
     include partials/loading-state
   if process.env.NODE_ENV === 'development'

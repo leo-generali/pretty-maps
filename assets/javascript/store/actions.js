@@ -1,6 +1,7 @@
 const actions = {
-  updateInput(context, payload) {
-    context.commit('updateInput', payload);
+  updateUnit(context, payload) {
+    const isMetric = payload === 'Kilometers';
+    context.commit('updateUnit', isMetric);
   }
 };
 
