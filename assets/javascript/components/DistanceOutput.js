@@ -22,11 +22,16 @@ class DistanceOutput extends Component {
     const outputDistance = isMetric
       ? self.meters * 0.001
       : self.meters * 0.000621371;
+    const outputUnit = isMetric ? 'km' : 'mi';
+    const output = roundToTwo(outputDistance) + outputUnit;
 
     this.canvasContext.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.canvasContext.font = '60px sans-serif';
     this.canvasContext.fillStyle = 'white';
-    this.canvasContext.fillText(roundToTwo(outputDistance), 20, 100);
+    this.canvasContext.fillText(output, 20, 100);
+    this.canvasContext.font = '40px sans-serif';
+    this.canvasContext.fillStyle = 'blue';
+    this.canvasContext.fillText('distance', 20, 150);
   }
 }
 

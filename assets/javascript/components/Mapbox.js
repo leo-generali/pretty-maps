@@ -1,5 +1,5 @@
 import { $ } from '../modules/bling';
-import { mapConfig } from '../activity/config';
+import { mapConfig } from '../config';
 import { MAPBOX_ACCESS_KEY } from '../modules/secrets';
 
 class Maxbox {

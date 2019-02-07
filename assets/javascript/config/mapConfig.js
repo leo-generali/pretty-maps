@@ -1,3 +1,5 @@
+import colors from './colors';
+
 const mapConfig = (coordinates) => {
   return {
     id: 'running_route',
@@ -18,10 +20,10 @@ const mapConfig = (coordinates) => {
       'line-cap': 'round'
     },
     paint: {
-      'line-color': '#0892CB',
+      'line-color': colors.main,
       'line-width': 3
     }
   };
 };
 
-export { mapConfig };
+export default mapConfig;
