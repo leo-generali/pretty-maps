@@ -7,6 +7,7 @@ const activity_controller = require('../controllers/activityController');
 router.get('/', home_controller.index);
 router.get('/login', home_controller.login);
 router.get('/logout', home_controller.logout);
+router.get('/failed', home_controller.failedLogin);
 
 router.get('/activities', ensureAuthenticated, activity_controller.index);
 //prettier-ignore

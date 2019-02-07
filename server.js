@@ -27,7 +27,7 @@ app.get(
 
 app.get(
   '/auth/strava/callback',
-  passport.authenticate('strava', { failureRedirect: '/login' }),
+  passport.authenticate('strava', { failureRedirect: '/failed' }),
   (req, res) => {
     res.redirect('/');
   }
