@@ -6,11 +6,13 @@ class DistanceOutput extends Component {
   constructor(meters) {
     super({
       store,
-      element: '.js-unit-type'
+      element: '.map-container__canvas-layer'
     });
 
     this.meters = meters;
-    this.canvas = document.querySelector('.map-container__canvas-layer');
+    this.canvas = this.element;
+    this.canvas.width = 1000;
+    this.canvas.height = 1000;
     this.canvasContext = this.canvas.getContext('2d');
   }
 
@@ -22,9 +24,9 @@ class DistanceOutput extends Component {
       : self.meters * 0.000621371;
 
     this.canvasContext.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.canvasContext.font = '30px serif';
+    this.canvasContext.font = '60px sans-serif';
     this.canvasContext.fillStyle = 'white';
-    this.canvasContext.fillText(roundToTwo(outputDistance), 10, 50);
+    this.canvasContext.fillText(roundToTwo(outputDistance), 20, 100);
   }
 }
 

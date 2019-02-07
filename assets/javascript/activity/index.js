@@ -1,44 +1,15 @@
 import { $ } from '../modules/bling';
-import { MAPBOX_ACCESS_KEY } from '../modules/secrets';
-import { mapConfig } from './config';
+import Mapbox from '../components/Mapbox';
 
 const run = () => {
   const bounds = JSON.parse($('#map-container').dataset.bounds);
   const coords = JSON.parse($('#map-container').dataset.coords);
+  const map = new Mapbox(bounds, coords, 'map-container');
+  map.render();
 
-  const avgX = (bounds.maxX + bounds.minX) / 2;
-  const avgY = (bounds.maxY + bounds.minY) / 2;
-  const center = [avgX, avgY];
-
-  if (typeof mapboxgl !== 'undefined') {
-    mapboxgl.accessToken = MAPBOX_ACCESS_KEY;
-    const map = new mapboxgl.Map({
-      container: 'map-container',
-      style: 'mapbox://styles/leogenerali/cjrmbdavm16fr2srwjg66llb1',
-      center: center,
-      interactive: false,
-      zoom: 12,
-      preserveDrawingBuffer: true
-    });
-
-    map.on('load', () => {
-      map.addLayer(mapConfig(coords));
-      map.fitBounds([[bounds.minX, bounds.minY], [bounds.maxX, bounds.maxY]], {
-        padding: { top: 50, bottom: 50, left: 50, right: 50 }
-      });
-    });
-
-    map.once('idle', () => {
-      const imageURI = map.getCanvas().toDataURL('image/png');
-      $('.map-loading-state').parentNode.removeChild($('.map-loading-state'));
-      $('.js-map-img').setAttribute('src', imageURI);
-    });
-
-    $('#downloadLink').addEventListener('click', function() {
-      const img = map.getCanvas().toDataURL('image/png');
-      this.href = img;
-    });
-  }
+  $('#downloadLink').addEventListener('click', function() {
+    this.href = map.createMapImage();
+  });
 };
 
 export { run };
