@@ -1,0 +1,11 @@
+.flash-message {
+  padding: 10px;
+
+  &__text {
+    font-weight: bold;
+  }
+
+  &--error {
+    background-color: red;
+  }
+}

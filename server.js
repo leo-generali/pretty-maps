@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const app = express();
+const flash = require('connect-flash');
 
 const session = require('./config/session');
 const passport = require('./config/passport');
@@ -10,6 +11,8 @@ const router = require('./routes/index');
 
 app.use(session);
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(flash());
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));

@@ -1,24 +1,25 @@
 const express = require('express');
 const router = express.Router();
 
-const pages_controller = require('../controllers/pagesController');
-const activity_controller = require('../controllers/activityController');
+const pagesController = require('../controllers/pagesController');
+const activityController = require('../controllers/activityController');
 
-router.get('/', pages_controller.index);
-router.get('/login', pages_controller.login);
-router.get('/logout', pages_controller.logout);
-router.get('/about', pages_controller.about);
-router.get('/failed', pages_controller.failedLogin);
+router.get('/', pagesController.index);
+router.get('/login', pagesController.login);
+router.get('/logout', pagesController.logout);
+router.get('/about', pagesController.about);
+router.get('/failed', pagesController.failedLogin);
 
-router.get('/activities', ensureAuthenticated, activity_controller.index);
+router.get('/activities', ensureAuthenticated, activityController.index);
 //prettier-ignore
-router.get('/activity/:activityId', ensureAuthenticated, activity_controller.read);
+router.get('/activity/:activityId', ensureAuthenticated, activityController.read);
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
     return next();
   }
-  res.redirect('/login');
+  req.flash('error', 'You must be logged in to access this 😢');
+  res.redirect('/');
 }
 
 module.exports = router;

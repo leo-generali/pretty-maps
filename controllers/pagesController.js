@@ -1,5 +1,8 @@
 exports.index = (req, res) => {
-  res.render('pages/home/index', { user: req.user });
+  res.render('pages/home/index', {
+    user: req.user,
+    message: req.flash()
+  });
 };
 
 exports.login = (req, res) => {
