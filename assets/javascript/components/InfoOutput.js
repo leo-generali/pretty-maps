@@ -55,9 +55,9 @@ class InfoOutput extends Component {
 
     const gradient = this.canvasContext.createLinearGradient(
       posX,
-      posY,
+      posY - TEXT_SIZE - 40,
       posX + textWidth,
-      posY + TEXT_SIZE
+      posY
     );
     gradient.addColorStop(0, 'rgb(255, 0, 128)');
     gradient.addColorStop(1, 'rgb(255, 153, 51)');
