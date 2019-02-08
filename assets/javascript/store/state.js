@@ -1,7 +1,8 @@
 const state = {
   isMetric: false,
   seconds: 0,
-  distance: ''
+  distance: '',
+  meterPerSecond: ''
 };
 
 export default state;

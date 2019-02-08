@@ -6,6 +6,10 @@ const actions = {
 
   updateTime(context, payload) {
     context.commit('updateTime', payload);
+  },
+
+  updatePace(context, payload) {
+    context.commit('updatePace', payload);
   }
 };
 

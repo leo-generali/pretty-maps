@@ -1,8 +1,6 @@
 export const roundToTwo = (num) => +(Math.round(num + 'e+2') + 'e-2');
 
 export const secondsToHHMMSS = (activitySeconds) => {
-  console.log(activitySeconds);
-
   const hours = Math.floor(activitySeconds / 3600);
   const minutes = Math.floor((activitySeconds % 3600) / 60);
   const seconds = Math.floor((activitySeconds % 3600) % 60);

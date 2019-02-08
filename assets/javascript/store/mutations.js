@@ -9,6 +9,12 @@ const mutations = {
     state.seconds = payload;
 
     return state;
+  },
+
+  updatePace(state, payload) {
+    state.meterPerSecond = payload;
+
+    return state;
   }
 };
 
