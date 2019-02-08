@@ -1,10 +1,9 @@
 extends ../../layouts/application
 
 block content
-  img.src(src=`${user.photos[0].value}`, alt="")
-  p ID #{user.id}
-  p Name #{user.displayName}
-  p City #{user._json.city}
+  img.src(src=`${user.photos[0].value}`, alt=`Photo of ${user.displayName}`)
+  p=user.displayName
+  p=user._json.city
 
   each activity in activities
     if activity.map.summary_polyline

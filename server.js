@@ -8,11 +8,18 @@ const session = require('./config/session');
 const passport = require('./config/passport');
 
 const router = require('./routes/index');
+const helpers = require('./helpers');
 
 app.use(session);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(flash());
+
+app.use((req, res, next) => {
+  res.locals.h = helpers;
+  message = req.flash();
+  next();
+});
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));

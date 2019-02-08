@@ -9,6 +9,7 @@ block scripts
 
 block content
   p=activity.name
+  a.strava-link(href=`https://www.strava.com/activities/${activity.id}`, target='_blank') View on Strava
   include partials/map-form
   include partials/loading-state
   .map-container
