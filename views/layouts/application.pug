@@ -7,18 +7,7 @@ html(lang="en")
     block styles
     link(href="/dist/App.css", text="text/css", rel="stylesheet")
   body.container
-    unless user
-      p
-        a(href="/") Home
-        span  | 
-        a(href="/login") Login
-    else
-      p
-        a(href="/") Home
-        span  | 
-        a(href="/activities") Activities
-        span  | 
-        a(href="/logout") Log Out
+    include partials/header
     block content
     block scripts
     script(src="/dist/App.bundle.js")
