@@ -12,5 +12,6 @@ exports.failedLogin = (req, res) => {
 
 exports.logout = (req, res) => {
   req.logout();
+  req.session = null;
   res.redirect('/');
 };
