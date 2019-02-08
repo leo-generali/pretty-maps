@@ -1,4 +1,5 @@
 import { roundToTwo, secondsToHHMMSS } from '../modules/helpers';
+import { colors } from '../config';
 import Component from '../modules/component';
 import store from '../store/index';
 
@@ -18,18 +19,16 @@ class InfoOutput extends Component {
 
   render() {
     this.clearRect();
-    this.renderBackgroundLayer();
+
     this.renderDistance();
+    this.renderLabel('Distance', 20, 950);
+
     this.renderTime();
+    this.renderLabel('Time', 366, 950);
   }
 
   clearRect() {
-    this.canvasContext.clearRect(0, 0, this.canvas.width, this.canvas.height);
-  }
-
-  renderBackgroundLayer() {
-    this.canvasContext.fillStyle = 'rgba(225,225,225,0.5)';
-    this.canvasContext.fillRect(0, 800, 1000, 200);
+    this.canvasContext.clearRect(0, 0, 1000, 1000);
   }
 
   renderDistance() {
@@ -40,24 +39,48 @@ class InfoOutput extends Component {
     const outputUnit = isMetric ? 'km' : 'mi';
     const output = roundToTwo(outputDistance) + outputUnit;
 
+    this.canvasContext.shadowOffsetX = 2.5;
+    this.canvasContext.shadowOffsetY = 2.5;
+    this.canvasContext.shadowColor = 'rgba(0,0,0,1)';
+
     this.canvasContext.font = '60px sans-serif';
     this.canvasContext.fillStyle = 'white';
     this.canvasContext.fillText(output, 20, 900);
-    this.canvasContext.font = '40px sans-serif';
-    this.canvasContext.fillStyle = 'blue';
-    this.canvasContext.fillText('distance', 20, 950);
+  }
+
+  renderLabel(text, posX, posY) {
+    const TEXT_SIZE = 40;
+    this.canvasContext.font = `${TEXT_SIZE}px sans-serif`;
+    const textWidth = this.canvasContext.measureText(text).width;
+
+    const gradient = this.canvasContext.createLinearGradient(
+      posX,
+      posY,
+      posX + textWidth,
+      posY + TEXT_SIZE
+    );
+    gradient.addColorStop(0, 'rgb(255, 0, 128)');
+    gradient.addColorStop(1, 'rgb(255, 153, 51)');
+
+    this.canvasContext.shadowOffsetX = 1.5;
+    this.canvasContext.shadowOffsetY = 1.5;
+    this.canvasContext.shadowColor = 'rgba(0,0,0,1)';
+
+    this.canvasContext.fillStyle = gradient;
+    this.canvasContext.fillText(text, posX, posY);
   }
 
   renderTime() {
     const { seconds } = store.state;
     const time = secondsToHHMMSS(seconds);
 
+    this.canvasContext.shadowOffsetX = 2.5;
+    this.canvasContext.shadowOffsetY = 2.5;
+    this.canvasContext.shadowColor = 'rgba(0,0,0,1)';
+
     this.canvasContext.font = '60px sans-serif';
     this.canvasContext.fillStyle = 'white';
-    this.canvasContext.fillText(time, 450, 900);
-    this.canvasContext.font = '40px sans-serif';
-    this.canvasContext.fillStyle = 'blue';
-    this.canvasContext.fillText('time', 450, 950);
+    this.canvasContext.fillText(time, 366, 900);
   }
 }
 

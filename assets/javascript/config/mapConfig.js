@@ -20,7 +20,7 @@ const mapConfig = (coordinates) => {
       'line-cap': 'round'
     },
     paint: {
-      'line-color': colors.main,
+      'line-color': colors.accent,
       'line-width': 3
     }
   };
