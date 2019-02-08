@@ -11,12 +11,12 @@ exports.index = (req, res) => {
     limits
   ) {
     if (!err) {
-      res.render('activity/index', {
+      res.render('activity/index/index', {
         activities: payload,
         user: req.user
       });
     } else {
-      res.render('activity/index', {
+      res.render('activity/index/index', {
         activities: [],
         user: req.user
       });
@@ -36,14 +36,14 @@ exports.read = (req, res) => {
       const geoJSON = polyline.toGeoJSON(payload.map.polyline);
       const bounds = getBounds(geoJSON.coordinates);
 
-      res.render('activity/read', {
+      res.render('activity/read/index', {
         user: req.user,
         activity: payload,
         coordinates: geoJSON.coordinates,
         bounds: bounds
       });
     } else {
-      res.render('activity/read', {
+      res.render('activity/read/index', {
         user: req.user,
         activity: null
       });

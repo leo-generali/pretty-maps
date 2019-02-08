@@ -5,9 +5,10 @@ const run = () => {
   const bounds = JSON.parse($('#map-container').dataset.bounds);
   const coords = JSON.parse($('#map-container').dataset.coords);
   const map = new Mapbox(bounds, coords, 'map-container');
+
   map.render();
 
-  $('#downloadLink').addEventListener('click', function() {
+  $('.js-map-download-link').addEventListener('click', function() {
     this.href = map.createMapImage();
   });
 };

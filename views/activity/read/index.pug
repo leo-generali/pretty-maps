@@ -1,4 +1,4 @@
-extends ../layout
+extends ../../layout
 
 block styles
   link(rel="stylesheet", href="https://api.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.css")
@@ -9,11 +9,10 @@ block scripts
 
 block content
   p=activity.name
-  .mapbox-hidden
-    #map-container.mapbox-hidden__map(data-coords=coordinates)(data-bounds=bounds)(data-distance=activity.distance)(data-time=activity.moving_time)
   include partials/map-form
   include partials/loading-state
   .map-container
     canvas.map-container__canvas-layer
-    img.map-container__map-layer.js-map-img(src="", alt=`Map of your ${activity.name} activity`)
-  a#downloadLink(href="", download="map.png") Download ↓
+    img.map-container__map-layer.js-map-img(src="", alt=`${activity.name}`)
+  a.js-map-download-link(href="", download="map.png") Download ↓
+  include partials/hidden-map
