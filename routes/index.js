@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-const home_controller = require('../controllers/homeController');
+const pages_controller = require('../controllers/pagesController');
 const activity_controller = require('../controllers/activityController');
 
-router.get('/', home_controller.index);
-router.get('/login', home_controller.login);
-router.get('/logout', home_controller.logout);
-router.get('/failed', home_controller.failedLogin);
+router.get('/', pages_controller.index);
+router.get('/login', pages_controller.login);
+router.get('/logout', pages_controller.logout);
+router.get('/about', pages_controller.about);
+router.get('/failed', pages_controller.failedLogin);
 
 router.get('/activities', ensureAuthenticated, activity_controller.index);
 //prettier-ignore
