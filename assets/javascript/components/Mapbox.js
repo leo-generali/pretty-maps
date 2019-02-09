@@ -38,7 +38,8 @@ class Maxbox {
 
     this.map.once('idle', () => {
       const imageURI = this.map.getCanvas().toDataURL('image/png');
-      $('.map-loading-state').parentNode.removeChild($('.map-loading-state'));
+      $('.js-map-loading').parentNode.removeChild($('.js-map-loading'));
+      $('.js-map-container').style.display = 'block';
       $('.js-map-img').setAttribute('src', imageURI);
     });
   }

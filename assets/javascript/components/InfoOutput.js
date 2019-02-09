@@ -4,13 +4,12 @@ import Component from '../modules/component';
 import store from '../store/index';
 
 class InfoOutput extends Component {
-  constructor(meters) {
+  constructor() {
     super({
       store,
       element: '.map-container__canvas-layer'
     });
 
-    this.meters = meters;
     this.canvas = this.element;
     this.canvas.width = 1000;
     this.canvas.height = 1000;
@@ -62,8 +61,8 @@ class InfoOutput extends Component {
   renderDistance() {
     const { isMetric } = store.state;
     const outputDistance = isMetric
-      ? this.meters * 0.001
-      : this.meters * 0.000621371;
+      ? store.state.distance * 0.001
+      : store.state.distance * 0.000621371;
     const outputUnit = isMetric ? 'km' : 'mi';
     const output = roundToTwo(outputDistance) + outputUnit;
 
@@ -92,6 +91,7 @@ class InfoOutput extends Component {
   renderPace() {
     const { isMetric, meterPerSecond } = store.state;
     const conversion = isMetric ? 16.666666667 : 26.8224;
+    const unit = isMetric ? 'km' : 'mi';
 
     const minutePerDistance = conversion / meterPerSecond;
     const secondsPercent = minutePerDistance - Math.floor(minutePerDistance);
@@ -100,7 +100,7 @@ class InfoOutput extends Component {
     const seconds = Math.floor(secondsPercent * 60);
 
     const sOutput = seconds > 10 ? seconds : `0${seconds}`;
-    const pace = `${minutes}:${sOutput}`;
+    const pace = `${minutes}:${sOutput}/${unit}`;
 
     this.canvasContext.font = '60px sans-serif';
     this.canvasContext.fillStyle = 'white';

@@ -12,7 +12,7 @@ block content
   a.strava-link(href=`https://www.strava.com/activities/${activity.id}`, target='_blank') View on Strava
   include partials/map-form
   include partials/loading-state
-  .map-container
+  div.js-map-container.map-container
     canvas.map-container__canvas-layer
     img.map-container__map-layer.js-map-img(src="", alt=`${activity.name}`)
   a.js-map-download-link(href="", download="map.png") Download ↓

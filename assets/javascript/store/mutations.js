@@ -5,6 +5,12 @@ const mutations = {
     return state;
   },
 
+  updateDistance(state, payload) {
+    state.distance = payload;
+
+    return state;
+  },
+
   updateTime(state, payload) {
     state.seconds = payload;
 

@@ -9,6 +9,7 @@ const data = {
   distance: $('.mapbox-hidden__map').getAttribute('data-distance')
 };
 
+store.dispatch('updateDistance', data.distance);
 store.dispatch('updateTime', data.time);
 store.dispatch('updatePace', data.distance / data.time);
 
@@ -16,8 +17,7 @@ $('.js-unit-select').addEventListener('change', function() {
   store.dispatch('updateUnit', this.value);
 });
 
-const infoOutputInstance = new InfoOutput(data.distance);
-
+const infoOutputInstance = new InfoOutput();
 infoOutputInstance.render();
 
 run();

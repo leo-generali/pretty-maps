@@ -4,6 +4,10 @@ const actions = {
     context.commit('updateUnit', isMetric);
   },
 
+  updateDistance(context, payload) {
+    context.commit('updateDistance', payload);
+  },
+
   updateTime(context, payload) {
     context.commit('updateTime', payload);
   },

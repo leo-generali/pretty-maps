@@ -13,6 +13,7 @@
   max-width: 500px;
   height: auto;
   position: relative;
+  display: none;
 
   &__canvas-layer {
     position: absolute;
@@ -37,7 +38,6 @@
     flex-direction: column;
   }
 }
-
 
 .strava-link {
   color: #fc4c02;
