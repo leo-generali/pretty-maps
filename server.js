@@ -38,6 +38,10 @@ app.get(
   '/auth/strava/callback',
   passport.authenticate('strava', { failureRedirect: '/failed' }),
   (req, res) => {
+    req.flash(
+      'affirmative',
+      'Successfully logged in <span class="flash-message__icon">👍</span>'
+    );
     res.redirect('/');
   }
 );

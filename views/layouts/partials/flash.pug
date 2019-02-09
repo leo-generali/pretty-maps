@@ -2,4 +2,4 @@ if Object.keys(message).length > 0
   - const key = Object.keys(message)[0]
   - const text = message[key][0]
   .flash-message(class="flash-message--"+key)
-    p.flash-message__text=text
+    p.flash-message__text!=text

@@ -1,11 +1,63 @@
+@mixin flash-border($color) {
+  border-top: $color 0.3rem solid;
+}
+
 .flash-message {
-  padding: 10px;
+  padding: 1rem;
+  background-color: #fff;
 
   &__text {
     font-weight: bold;
+    text-align: center;
+  }
+
+  &__icon {
+    display: inline-block;
+    animation-name: bounce;
+    animation-duration: 1s;
+  }
+
+  &--affirmative {
+    @include flash-border($color-green);
+  }
+
+  &--info {
+    @include flash-border($color-navy);
   }
 
   &--error {
-    background-color: red;
+    @include flash-border($color-red);
+  }
+}
+
+@keyframes bounce {
+  from,
+  60%,
+  75%,
+  90%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -3000px, 0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(0, 12.5px, 0);
+  }
+
+  75% {
+    transform: translate3d(0, -5px, 0);
+  }
+
+  90% {
+    transform: translate3d(0, 2.5px, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
   }
 }
