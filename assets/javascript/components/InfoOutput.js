@@ -7,7 +7,7 @@ class InfoOutput extends Component {
   constructor() {
     super({
       store,
-      element: '.map-container__canvas-layer'
+      element: '.js-map-canvas-layer'
     });
 
     this.canvas = this.element;

@@ -1,0 +1,7 @@
+body {
+  padding-bottom: 5rem;
+
+  @media (min-width: $navbar-change-width) {
+    padding-bottom: 0;
+  }
+}
