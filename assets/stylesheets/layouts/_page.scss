@@ -1,5 +1,16 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
   padding-bottom: 5rem;
+  background-color: #f1f3f5;
 
   @media (min-width: $navbar-change-width) {
     padding-bottom: 0;

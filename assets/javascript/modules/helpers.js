@@ -6,7 +6,7 @@ export const secondsToHHMMSS = (activitySeconds) => {
   const seconds = Math.floor((activitySeconds % 3600) % 60);
 
   const hDisplay = hours > 0 ? `${hours}:` : '';
-  const mDisplay = minutes > 0 ? minutes : '';
-  const sDisplay = seconds > 0 ? seconds : '';
+  const mDisplay = minutes > 10 ? minutes : `0${minutes}`;
+  const sDisplay = seconds > 10 ? seconds : `0${seconds}`;
   return `${hDisplay}${mDisplay}:${sDisplay}`;
 };
