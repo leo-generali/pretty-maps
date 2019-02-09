@@ -1,21 +1,16 @@
 mixin nav-link(path, text, icon)
-  a.navbar__link(href=`/${path}`)
+  a.navbar__link(href=`${path}`, class=h.onCurrentNav(currentPath, path, text))
     != h.svg(`icons/${icon}`)
     =text
 
 unless user
   nav.navbar
-    +nav-link('', 'Home', 'home')
-    span  | 
-    +nav-link('login', 'Login', 'id')
-    span  | 
-    +nav-link('about', 'About', 'question-mark')
+    +nav-link('/', 'Home', 'home')
+    +nav-link('/login', 'Login', 'id')
+    +nav-link('/about', 'About', 'question-mark')
 else
   nav.navbar
-    +nav-link('', 'Home', 'home')
-    span  | 
-    +nav-link('activities', 'Activities', 'walk')
-    span  | 
-    +nav-link('logout', 'Log Out', 'id')
-    span  | 
-    +nav-link('about', 'About', 'question-mark')
+    +nav-link('/', 'Home', 'home')
+    +nav-link('/activities', 'Activities', 'walk')
+    +nav-link('/logout', 'Log Out', 'id')
+    +nav-link('/about', 'About', 'question-mark')

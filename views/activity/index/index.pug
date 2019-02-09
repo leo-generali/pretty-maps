@@ -7,7 +7,7 @@ block content
 
   each activity in activities
     if activity.map.summary_polyline
-      a.index-activity(href=`activity/${activity.id}`)
+      a.index-activity(href=`activities/${activity.id}`)
         p=activity.name
     unless activity.map.summary_polyline
         p=activity.name

@@ -12,7 +12,7 @@ router.get('/failed', pagesController.failedLogin);
 
 router.get('/activities', ensureAuthenticated, activityController.index);
 //prettier-ignore
-router.get('/activity/:activityId', ensureAuthenticated, activityController.read);
+router.get('/activities/:activityId', ensureAuthenticated, activityController.read);
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
