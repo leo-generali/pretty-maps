@@ -9,5 +9,6 @@ block content
     if activity.map.summary_polyline
       a.index-activity(href=`activities/${activity.id}`)
         p=activity.name
-    unless activity.map.summary_polyline
+    else
+      div.index-activity.index-activity--inactive
         p=activity.name

@@ -1,8 +1,26 @@
 import colors from './colors';
 
-const mapConfig = (coordinates) => {
+const lineOptions = {
+  blur: {
+    paint: {
+      'line-color': colors.accent,
+      'line-width': 10,
+      'line-blur': 8
+    }
+  },
+  regular: {
+    paint: {
+      'line-color': colors.accent,
+      'line-width': 2,
+      'line-opacity': 1
+    }
+  }
+};
+
+const mapConfig = (coordinates, name) => {
+  console.log();
   return {
-    id: 'running_route',
+    id: name,
     type: 'line',
     source: {
       type: 'geojson',
@@ -19,10 +37,7 @@ const mapConfig = (coordinates) => {
       'line-join': 'round',
       'line-cap': 'round'
     },
-    paint: {
-      'line-color': colors.accent,
-      'line-width': 3
-    }
+    ...lineOptions[name]
   };
 };
 

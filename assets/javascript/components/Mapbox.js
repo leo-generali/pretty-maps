@@ -24,7 +24,8 @@ class Maxbox {
 
   render() {
     this.map.on('load', () => {
-      this.map.addLayer(mapConfig(this.coords));
+      // this.map.addLayer(mapConfig(this.coords, 'blur'));
+      this.map.addLayer(mapConfig(this.coords, 'regular'));
       this.map.fitBounds(
         [
           [this.bounds.minX, this.bounds.minY],

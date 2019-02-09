@@ -38,7 +38,7 @@ class InfoOutput extends Component {
 
   renderLabel(text, posX, posY) {
     const TEXT_SIZE = 40;
-    this.canvasContext.font = `${TEXT_SIZE}px sans-serif`;
+    this.canvasContext.font = `${TEXT_SIZE}px Karla`;
     const textWidth = this.canvasContext.measureText(text).width;
 
     const gradient = this.canvasContext.createLinearGradient(
@@ -70,7 +70,7 @@ class InfoOutput extends Component {
     this.canvasContext.shadowOffsetY = 2.5;
     this.canvasContext.shadowColor = 'rgba(0,0,0,1)';
 
-    this.canvasContext.font = '60px sans-serif';
+    this.canvasContext.font = '60px Karla';
     this.canvasContext.fillStyle = 'white';
     this.canvasContext.fillText(output, 50, 900);
   }
@@ -83,7 +83,7 @@ class InfoOutput extends Component {
     this.canvasContext.shadowOffsetY = 2.5;
     this.canvasContext.shadowColor = 'rgba(0,0,0,1)';
 
-    this.canvasContext.font = '60px sans-serif';
+    this.canvasContext.font = '60px Karla';
     this.canvasContext.fillStyle = 'white';
     this.canvasContext.fillText(time, 500, 900);
   }
@@ -99,10 +99,10 @@ class InfoOutput extends Component {
     const minutes = Math.floor(minutePerDistance);
     const seconds = Math.floor(secondsPercent * 60);
 
-    const sOutput = seconds > 10 ? seconds : `0${seconds}`;
+    const sOutput = seconds > 9 ? seconds : `0${seconds}`;
     const pace = `${minutes}:${sOutput}/${unit}`;
 
-    this.canvasContext.font = '60px sans-serif';
+    this.canvasContext.font = '60px Karla';
     this.canvasContext.fillStyle = 'white';
     this.canvasContext.fillText(pace, 950, 900);
   }

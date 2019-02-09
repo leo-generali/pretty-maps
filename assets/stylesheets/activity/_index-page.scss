@@ -6,4 +6,13 @@
   display: block;
   text-decoration: none;
   color: $color-body-text;
+  width: 30rem;
+  margin: 1rem;
+  padding: 2rem;
+  border-top: $strava-orange 0.2rem solid;
+
+  &--inactive {
+    border-top: $color-body-text 0.2rem solid;
+    box-shadow: none;
+  }
 }

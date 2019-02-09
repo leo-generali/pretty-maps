@@ -1,3 +1,5 @@
+import FontFaceObserver from 'fontfaceobserver';
+
 import { $ } from './javascript/modules/bling';
 import { run } from './javascript/activity';
 
@@ -17,7 +19,9 @@ $('.js-unit-select').addEventListener('change', function() {
   store.dispatch('updateUnit', this.value);
 });
 
-const infoOutputInstance = new InfoOutput();
-infoOutputInstance.render();
-
-run();
+const font = new FontFaceObserver('Karla');
+font.load().then(() => {
+  const infoOutputInstance = new InfoOutput();
+  infoOutputInstance.render();
+  run();
+});
