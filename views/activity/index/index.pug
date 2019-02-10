@@ -1,13 +1,15 @@
 extends ../../layouts/application
 
 block content
-  img.src(src=`${user.photos[0].value}`, alt=`Photo of ${user.displayName}`)
-  p=user.displayName
-  p=user._json.city
+  div.profile
+    img.profile__image.src(src=`${user.photos[0].value}`, alt=`Photo of ${user.displayName}`)
+    div.profile__text
+      p.is-bold.f2=user.displayName
+      p.f3=user._json.city
 
   each activity in activities
     if activity.map.summary_polyline
-      a.index-activity(href=`activities/${activity.id}`)
+      a.index-activity.index-activity--active(href=`activities/${activity.id}`)
         p=activity.name
     else
       div.index-activity.index-activity--inactive
