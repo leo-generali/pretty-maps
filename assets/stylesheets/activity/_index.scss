@@ -19,10 +19,32 @@ $activity-padding-top-size: 0.3rem;
 }
 
 .activities-wrapper {
-  @media (min-width: $navbar-change-width) {
+  &__week {
+  }
+
+  &__seperator {
+    text-align: left;
+    max-width: 30rem;
+    margin: auto;
+
+    @media (min-width: $navbar-change-width) {
+      max-width: 100%;
+      margin: 0;
+    }
+  }
+
+  &__text {
+    @media (min-width: $navbar-change-width) {
+      display: inline;
+    }
+  }
+
+  &__weekly-activities {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+  }
+  @media (min-width: $navbar-change-width) {
   }
 }
 

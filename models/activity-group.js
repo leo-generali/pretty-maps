@@ -14,7 +14,6 @@ class ActivityGroup {
     const groupedResults = groupBy(this.activities, (result) =>
       result.getStartOfWeek()
     );
-    console.log(JSON.stringify(groupedResults, null, 2));
     const dateKeys = Object.keys(groupedResults);
     const activitiesByWeek = dateKeys.map((dateKey) => groupedResults[dateKey]);
     return activitiesByWeek;
