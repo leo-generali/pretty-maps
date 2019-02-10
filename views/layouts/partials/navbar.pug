@@ -5,12 +5,14 @@ mixin nav-link(path, text, icon)
 
 unless user
   nav.navbar
-    +nav-link('/', 'Home', 'home')
-    +nav-link('/login', 'Login', 'id')
-    +nav-link('/about', 'About', 'question-mark')
+    div.navbar__inner
+      +nav-link('/', 'Home', 'home')
+      +nav-link('/login', 'Login', 'id')
+      +nav-link('/about', 'About', 'question-mark')
 else
   nav.navbar
-    +nav-link('/', 'Home', 'home')
-    +nav-link('/activities', 'Activities', 'walk')
-    +nav-link('/logout', 'Log Out', 'id')
-    +nav-link('/about', 'About', 'question-mark')
+    div.navbar__inner
+      +nav-link('/', 'Home', 'home')
+      +nav-link('/activities', 'Activities', 'walk')
+      +nav-link('/logout', 'Log Out', 'id')
+      +nav-link('/about', 'About', 'question-mark')

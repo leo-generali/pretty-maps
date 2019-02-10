@@ -16,3 +16,12 @@ body {
     padding-bottom: 0;
   }
 }
+
+.main {
+  max-width: $max-width;
+  margin: auto;
+
+  @media (min-width: $navbar-change-width) {
+    padding: 0 5rem;
+  }
+}

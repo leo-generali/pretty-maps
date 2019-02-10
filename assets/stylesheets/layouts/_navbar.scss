@@ -3,12 +3,22 @@
   background-color: #fff;
   bottom: 0;
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
   box-shadow: 0 6px 8px rgba(102, 119, 136, 0.03),
     0 1px 2px rgba(102, 119, 136, 0.3);
   padding: 1rem 0;
+
+  &__inner {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    @media (min-width: $navbar-change-width) {
+      justify-content: left;
+      padding: 0 5rem;
+    }
+  }
 
   &__link {
     text-decoration: none;
@@ -22,6 +32,10 @@
 
     svg {
       fill: lighten($color-body-text, 30);
+
+      @media (min-width: $navbar-change-width) {
+        display: none;
+      }
     }
 
     &--active {
@@ -35,16 +49,14 @@
     @media (min-width: $navbar-change-width) {
       font-size: 1.6rem;
       letter-spacing: initial;
-
-      svg {
-        display: none;
-      }
+      align-items: start;
+      width: initial;
+      margin-right: 1rem;
     }
   }
 
   @media (min-width: $navbar-change-width) {
     position: relative;
     bottom: 0;
-    justify-content: left;
   }
 }

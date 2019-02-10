@@ -6,9 +6,10 @@ html(lang="en")
     title Document
     block styles
     link(href="/dist/App.css", text="text/css", rel="stylesheet")
-  body.container
+  body
     include partials/flash
     include partials/navbar
-    block content
+    main.main(role='main')
+      block content
     block scripts
     script(src="/dist/App.bundle.js")
