@@ -15,7 +15,7 @@ block content
           p.activities-wrapper__text.f3.is-bold=`${startOfWeek} to `
           p.activities-wrapper__text.f3.is-bold=endOfWeek
         div.activities-wrapper__weekly-activities
-          each activity in Object.values(activityGroup)
+          each activity, index in Object.values(activityGroup).reverse()
             if activity.map.summary_polyline
               a.index-activity.index-activity--active(href=`activities/${activity.id}`)
                 p=activity.name
