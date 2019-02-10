@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const pagesController = require('../controllers/pagesController');
-const activityController = require('../controllers/activityController');
+const pagesController = require('../controllers/pages-controller');
+const activityController = require('../controllers/activity-controller');
 
 router.get('/', pagesController.index);
 router.get('/login', pagesController.login);

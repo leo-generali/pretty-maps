@@ -6,11 +6,15 @@ block content
     div.profile__text
       p.is-bold.f2=user.displayName
       p.f3=user._json.city
-
-  each activity in activities
-    if activity.map.summary_polyline
-      a.index-activity.index-activity--active(href=`activities/${activity.id}`)
-        p=activity.name
-    else
-      div.index-activity.index-activity--inactive
-        p=activity.name
+  each activityGroup in Object.values(activitiesByWeek)
+    - const startOfWeek = activityGroup[0].getStartOfWeek().format('dddd MMMM, D')
+    - const endOfWeek = activityGroup[0].getEndOfWeek().format('dddd MMMM, D')
+    p=`${startOfWeek} to ${endOfWeek}`
+    div.activities-wrapper
+    each activity in Object.values(activityGroup)
+      if activity.map.summary_polyline
+        a.index-activity.index-activity--active(href=`activities/${activity.id}`)
+          p=activity.name
+      else
+        div.index-activity.index-activity--inactive
+          p=activity.name

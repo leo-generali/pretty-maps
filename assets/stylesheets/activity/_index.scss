@@ -1,3 +1,9 @@
+$activity-padding-top-size: 0.3rem;
+
+@mixin activity-border-top($color) {
+  border-top: $color $activity-padding-top-size solid;
+}
+
 .profile {
   display: flex;
   align-items: center;
@@ -12,6 +18,14 @@
   }
 }
 
+.activities-wrapper {
+  @media (min-width: $navbar-change-width) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
 .index-activity {
   border-radius: 0.2rem;
   box-shadow: $box-shadow-default;
@@ -21,10 +35,15 @@
   color: $color-body-text;
   width: 30rem;
   margin: 1rem auto;
-  padding: 2rem;
-  border-top: $color-strava-orange 0.2rem solid;
+  padding: (2rem - $activity-padding-top-size) 2rem 2rem;
+
+  @media (min-width: $navbar-change-width) {
+    width: 35rem;
+    margin: 0;
+  }
 
   &--active {
+    @include activity-border-top($color-strava-orange);
     transition: 0.2s;
 
     &:hover {
@@ -33,7 +52,7 @@
   }
 
   &--inactive {
-    border-top: $color-body-text 0.2rem solid;
+    @include activity-border-top($color-body-text);
     box-shadow: none;
   }
 }
