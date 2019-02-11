@@ -1,16 +1,21 @@
 {
   "name": "pretty-maps",
+  "engines": {
+    "node": "10.11.0",
+    "yarn": "1.10.1"
+  },
   "version": "0.0.1",
   "description": "Pretty running maps from Strava",
-  "main": "server.js",
+  "main": "start.js",
   "license": "MIT",
   "scripts": {
-    "prod": "node ./server.js",
-    "watch": "NODE_ENV=development nodemon ./server.js --ignore assets/",
+    "prod": "node ./start.js",
+    "watch": "NODE_ENV=development nodemon ./start.js --ignore public/",
     "start": "concurrently \"yarn watch\" \"yarn assets\" --names \"💻,📦\" --prefix name",
     "assets": "webpack -w --display-max-modules 0 --mode=production",
     "build_assets": "webpack"
   },
+  "browserslist": "last 3 versions",
   "dependencies": {
     "@mapbox/polyline": "^1.0.0",
     "connect-flash": "^0.1.1",
