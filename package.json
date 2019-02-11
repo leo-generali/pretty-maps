@@ -13,8 +13,7 @@
     "watch": "nodemon ./start.js --ignore public/",
     "start": "concurrently \"yarn watch\" \"yarn assets\" --names \"💻,📦\" --prefix name",
     "assets": "webpack -w --display-max-modules 0 --mode=production",
-    "build_assets": "webpack",
-    "heroku-postbuild": "build_assets"
+    "build_assets": "webpack"
   },
   "browserslist": "last 3 versions",
   "dependencies": {
