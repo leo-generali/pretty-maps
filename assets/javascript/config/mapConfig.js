@@ -1,18 +1,28 @@
 import colors from './colors';
 
 const lineOptions = {
-  blur: {
+  one: {
     paint: {
       'line-color': colors.accent,
       'line-width': 10,
-      'line-blur': 8
+      'line-translate': [1, 2],
+      'line-opacity': 0.6,
+      'line-blur': 6
     }
   },
-  regular: {
+  two: {
     paint: {
       'line-color': colors.accent,
-      'line-width': 2,
-      'line-opacity': 1
+      'line-width': 4,
+      'line-opacity': 0.4,
+      'line-blur': 4
+    }
+  },
+  three: {
+    paint: {
+      'line-color': colors.accent,
+      'line-width': 2.5,
+      'line-opacity': 0.9
     }
   }
 };
