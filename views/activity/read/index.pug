@@ -8,12 +8,15 @@ block scripts
   script(src="/dist/MapEditor.bundle.js")
 
 block content
-  p=activity.name
-  a.strava-link(href=`https://www.strava.com/activities/${activity.id}`, target='_blank') View on Strava
-  include partials/map-form
-  include partials/loading-state
-  div.js-map-container.map-container
-    canvas.js-map-canvas-layer.map-container__canvas-layer
-    img.js-map-img.map-container__map-layer(src="", alt=`${activity.name}`)
-  a.js-map-download-link(href="", download="map.png") Download ↓
-  include partials/hidden-map
+  div.map-editor
+    section.map-editor__form
+      p=activity.name
+      a.strava-link(href=`https://www.strava.com/activities/${activity.id}`, target='_blank') View on Strava
+      include partials/map-form
+    section.map-editor__map
+      include partials/loading-state
+      div.js-map-container.map-container
+        canvas.js-map-canvas-layer.map-container__canvas-layer
+        img.js-map-img.map-container__map-layer(src="", alt=`${activity.name}`)
+      a.js-map-download-link(href="", download="map.png") Download ↓
+      include partials/hidden-map

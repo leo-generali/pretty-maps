@@ -8,12 +8,22 @@
   }
 }
 
+.map-editor {
+  &__form {
+    border-radius: 0.2rem;
+    box-shadow: $box-shadow-default;
+    background-color: #fff;
+    padding: 1.6rem;
+  }
+}
+
 .map-container {
   width: 100%;
   max-width: 500px;
   height: auto;
   position: relative;
   display: none;
+  margin: auto;
 
   &__canvas-layer {
     position: absolute;
