@@ -18,6 +18,7 @@ class InfoOutput extends Component {
 
   render() {
     this.clearRect();
+    this.renderActivityName();
 
     if (store.state.isShowingOnMap.distance) {
       this.canvasContext.textAlign = 'left';
@@ -38,10 +39,14 @@ class InfoOutput extends Component {
   }
 
   clearRect() {
+    this.clearShadow();
+    this.canvasContext.clearRect(0, 0, 1000, 1000);
+  }
+
+  clearShadow() {
     this.canvasContext.shadowOffsetX = 0;
     this.canvasContext.shadowOffsetY = 0;
     this.canvasContext.shadowColor = '';
-    this.canvasContext.clearRect(0, 0, 1000, 1000);
   }
 
   setLabelShadow() {
@@ -54,6 +59,22 @@ class InfoOutput extends Component {
     this.canvasContext.shadowOffsetX = 2.5;
     this.canvasContext.shadowOffsetY = 2.5;
     this.canvasContext.shadowColor = 'rgba(0,0,0,1)';
+  }
+
+  renderActivityName() {
+    const { activityName } = store.state;
+
+    this.setInfoShadow();
+
+    this.canvasContext.textAlign = 'left';
+    this.canvasContext.font = '60px Karla';
+    this.canvasContext.fillStyle = 'white';
+    this.canvasContext.fillText(activityName, 50, 100);
+
+    const width = this.canvasContext.measureText(activityName).width;
+    this.clearShadow();
+    this.canvasContext.fillStyle = 'white';
+    this.canvasContext.fillRect(50, 120, width, 6);
   }
 
   renderLabel(text, posX, posY) {

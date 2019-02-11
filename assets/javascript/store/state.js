@@ -3,6 +3,7 @@ const state = {
   seconds: 0,
   distance: '',
   meterPerSecond: '',
+  activityName: '',
   isShowingOnMap: {
     distance: true,
     time: true,

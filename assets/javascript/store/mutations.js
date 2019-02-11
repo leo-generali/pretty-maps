@@ -27,6 +27,12 @@ const mutations = {
     state.isShowingOnMap[payload.name] = payload.checked;
 
     return state;
+  },
+
+  updateActivityName(state, payload) {
+    state.activityName = payload;
+
+    return state;
   }
 };
 

@@ -1,8 +1,12 @@
 form.map-form
-  label(for='distance-unit') Unit/Measurement:
-  select#distance-unit.js-unit-select(autocomplete='off')
-    option(selected) Miles
-    option Kilometers
+  div
+    label(for='activity-name') Title
+    input#activity-name.js-activity-name-input(type='text', name='activity-name' value=activity.name)
+  div
+    label(for='distance-unit') Unit/Measurement:
+    select#distance-unit.js-unit-select(autocomplete='off')
+      option(selected) Miles
+      option Kilometers
   div
     p Show/Hide Data:
     div

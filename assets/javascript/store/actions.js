@@ -18,6 +18,10 @@ const actions = {
 
   updateIsShowingOnMap(context, payload) {
     context.commit('updateIsShowingOnMap', payload);
+  },
+
+  updateActivityName(context, payload) {
+    context.commit('updateActivityName', payload);
   }
 };
 
