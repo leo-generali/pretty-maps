@@ -10,10 +10,11 @@
   "license": "MIT",
   "scripts": {
     "prod": "node ./start.js",
-    "watch": "NODE_ENV=development nodemon ./start.js --ignore public/",
+    "watch": "nodemon ./start.js --ignore public/",
     "start": "concurrently \"yarn watch\" \"yarn assets\" --names \"💻,📦\" --prefix name",
     "assets": "webpack -w --display-max-modules 0 --mode=production",
-    "build_assets": "webpack"
+    "build_assets": "webpack",
+    "heroku-postbuild": "build_assets"
   },
   "browserslist": "last 3 versions",
   "dependencies": {
