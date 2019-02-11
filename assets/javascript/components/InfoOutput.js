@@ -18,6 +18,7 @@ class InfoOutput extends Component {
 
   render() {
     this.clearRect();
+    this.renderBackground();
 
     this.canvasContext.textAlign = 'left';
     this.renderDistance();
@@ -33,10 +34,22 @@ class InfoOutput extends Component {
   }
 
   clearRect() {
+    this.canvasContext.shadowOffsetX = 0;
+    this.canvasContext.shadowOffsetY = 0;
+    this.canvasContext.shadowColor = '';
     this.canvasContext.clearRect(0, 0, 1000, 1000);
   }
 
+  renderBackground() {
+    console.log('rendering the background');
+
+    this.canvasContext.fillStyle = 'rgba(140, 140, 140, 0.50)';
+    this.canvasContext.fillRect(0, 800, 1000, 1000);
+  }
+
   renderLabel(text, posX, posY) {
+    console.log(`rendering the ${text} label`);
+
     const TEXT_SIZE = 40;
     this.canvasContext.font = `${TEXT_SIZE}px Karla`;
     const textWidth = this.canvasContext.measureText(text).width;

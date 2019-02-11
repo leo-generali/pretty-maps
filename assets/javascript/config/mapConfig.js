@@ -18,7 +18,6 @@ const lineOptions = {
 };
 
 const mapConfig = (coordinates, name) => {
-  console.log();
   return {
     id: name,
     type: 'line',
