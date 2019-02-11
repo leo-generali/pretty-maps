@@ -14,6 +14,10 @@ const actions = {
 
   updatePace(context, payload) {
     context.commit('updatePace', payload);
+  },
+
+  updateIsShowingOnMap(context, payload) {
+    context.commit('updateIsShowingOnMap', payload);
   }
 };
 

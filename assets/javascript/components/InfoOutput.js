@@ -1,5 +1,5 @@
 import { roundToTwo, secondsToHHMMSS } from '../modules/helpers';
-import { colors } from '../config';
+import { spacer } from '../helpers/infoOutputHelper';
 import Component from '../modules/component';
 import store from '../store/index';
 
@@ -18,19 +18,23 @@ class InfoOutput extends Component {
 
   render() {
     this.clearRect();
-    this.renderBackground();
 
-    this.canvasContext.textAlign = 'left';
-    this.renderDistance();
-    this.renderLabel('Distance', 50, 950);
+    if (store.state.isShowingOnMap.distance) {
+      this.canvasContext.textAlign = 'left';
+      this.renderDistance();
+      this.renderLabel('DISTANCE', 50, 890);
+    }
 
-    this.canvasContext.textAlign = 'center';
-    this.renderTime();
-    this.renderLabel('Time', 500, 950);
-
-    this.canvasContext.textAlign = 'right';
-    this.renderPace();
-    this.renderLabel('Pace', 950, 950);
+    if (store.state.isShowingOnMap.time) {
+      this.canvasContext.textAlign = 'center';
+      this.renderTime();
+      this.renderLabel('TIME', 500, 890);
+    }
+    if (store.state.isShowingOnMap.pace) {
+      this.canvasContext.textAlign = 'right';
+      this.renderPace();
+      this.renderLabel('PACE', 950, 890);
+    }
   }
 
   clearRect() {
@@ -40,35 +44,25 @@ class InfoOutput extends Component {
     this.canvasContext.clearRect(0, 0, 1000, 1000);
   }
 
-  renderBackground() {
-    console.log('rendering the background');
-
-    this.canvasContext.fillStyle = 'rgba(140, 140, 140, 0.50)';
-    this.canvasContext.fillRect(0, 800, 1000, 1000);
-  }
-
-  renderLabel(text, posX, posY) {
-    console.log(`rendering the ${text} label`);
-
-    const TEXT_SIZE = 40;
-    this.canvasContext.font = `${TEXT_SIZE}px Karla`;
-    const textWidth = this.canvasContext.measureText(text).width;
-
-    const gradient = this.canvasContext.createLinearGradient(
-      posX,
-      posY - TEXT_SIZE - 40,
-      posX + textWidth,
-      posY
-    );
-    gradient.addColorStop(0, 'rgb(255, 0, 128)');
-    gradient.addColorStop(1, 'rgb(255, 153, 51)');
-
+  setLabelShadow() {
     this.canvasContext.shadowOffsetX = 1.5;
     this.canvasContext.shadowOffsetY = 1.5;
     this.canvasContext.shadowColor = 'rgba(0,0,0,1)';
+  }
 
-    this.canvasContext.fillStyle = gradient;
-    this.canvasContext.fillText(text, posX, posY);
+  setInfoShadow() {
+    this.canvasContext.shadowOffsetX = 2.5;
+    this.canvasContext.shadowOffsetY = 2.5;
+    this.canvasContext.shadowColor = 'rgba(0,0,0,1)';
+  }
+
+  renderLabel(text, posX, posY) {
+    const TEXT_SIZE = 36;
+    this.canvasContext.font = `${TEXT_SIZE}px Karla`;
+
+    this.setInfoShadow();
+    this.canvasContext.fillStyle = 'white';
+    this.canvasContext.fillText(spacer(text), posX, posY);
   }
 
   renderDistance() {
@@ -79,26 +73,16 @@ class InfoOutput extends Component {
     const outputUnit = isMetric ? 'km' : 'mi';
     const output = roundToTwo(outputDistance) + outputUnit;
 
-    this.canvasContext.shadowOffsetX = 2.5;
-    this.canvasContext.shadowOffsetY = 2.5;
-    this.canvasContext.shadowColor = 'rgba(0,0,0,1)';
-
-    this.canvasContext.font = '60px Karla';
-    this.canvasContext.fillStyle = 'white';
-    this.canvasContext.fillText(output, 50, 900);
+    this.setInfoShadow();
+    this.renderInfo(output, 50, 950);
   }
 
   renderTime() {
     const { seconds } = store.state;
     const time = secondsToHHMMSS(seconds);
 
-    this.canvasContext.shadowOffsetX = 2.5;
-    this.canvasContext.shadowOffsetY = 2.5;
-    this.canvasContext.shadowColor = 'rgba(0,0,0,1)';
-
-    this.canvasContext.font = '60px Karla';
-    this.canvasContext.fillStyle = 'white';
-    this.canvasContext.fillText(time, 500, 900);
+    this.setInfoShadow();
+    this.renderInfo(time, 500, 950);
   }
 
   renderPace() {
@@ -115,9 +99,14 @@ class InfoOutput extends Component {
     const sOutput = seconds > 9 ? seconds : `0${seconds}`;
     const pace = `${minutes}:${sOutput}/${unit}`;
 
+    this.setInfoShadow();
+    this.renderInfo(pace, 950, 950);
+  }
+
+  renderInfo(output, x, y) {
     this.canvasContext.font = '60px Karla';
     this.canvasContext.fillStyle = 'white';
-    this.canvasContext.fillText(pace, 950, 900);
+    this.canvasContext.fillText(output, x, y);
   }
 }
 

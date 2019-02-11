@@ -21,6 +21,12 @@ const mutations = {
     state.meterPerSecond = payload;
 
     return state;
+  },
+
+  updateIsShowingOnMap(state, payload) {
+    state.isShowingOnMap[payload.name] = payload.checked;
+
+    return state;
   }
 };
 

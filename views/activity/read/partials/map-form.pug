@@ -1,7 +1,16 @@
-div.map-form
+form.map-form
   label(for='distance-unit') Unit/Measurement:
-  select#distance-unit.js-unit-select
+  select#distance-unit.js-unit-select(autocomplete='off')
     option(selected) Miles
     option Kilometers
-  p.js-unit-type
-  p.js-pace
+  div
+    p Show/Hide Data:
+    div
+      input#data-distance.js-map-display-checkbox(type='checkbox', name='distance', checked, autocomplete='off')
+      label(for='distance') Distance
+    div
+      input#data-time.js-map-display-checkbox(type='checkbox', name='time', checked, autocomplete='off')
+      label(for='time') Time
+    div
+      input#data-pace.js-map-display-checkbox(type='checkbox', name='pace', checked, autocomplete='off')
+      label(for='pace') Pace
