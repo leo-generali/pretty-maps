@@ -40,11 +40,6 @@ $activity-padding-top-size: 0.3rem;
   }
 
   &__weekly-activities {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  @media (min-width: $navbar-change-width) {
   }
 }
 
