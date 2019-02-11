@@ -72,6 +72,12 @@ class InfoOutput extends Component {
     this.canvasContext.fillText(activityName, 50, 100);
 
     const width = this.canvasContext.measureText(activityName).width;
+
+    //prettier-ignore
+    const gradient = this.canvasContext.createLinearGradient(50, 120, width + 50, 160);
+    gradient.addColorStop(0, '#f83205');
+    gradient.addColorStop(1, '#fbaa1d');
+
     this.clearShadow();
     this.canvasContext.fillStyle = 'white';
     this.canvasContext.fillRect(50, 120, width, 6);
