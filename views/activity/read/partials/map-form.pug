@@ -1,20 +1,23 @@
 form.map-form
   div
-    label(for='activity-name') Title
-    input#activity-name.js-activity-name-input(type='text', name='activity-name', value=activity.name)
+    label.form__label(for='activity-name') Title
+    input#activity-name.js-activity-name-input.form__input(type='text', name='activity-name', value=activity.name)
   div
-    label(for='distance-unit') Unit/Measurement:
-    select#distance-unit.js-unit-select(autocomplete='off')
+    label.form__label(for='distance-unit') Unit/Measurement:
+    select#distance-unit.js-unit-select.form__select(autocomplete='off')
       option(selected) Miles
       option Kilometers
   div
     p Show/Hide Data:
-    div
+    label.form__switch
       input#data-distance.js-map-display-checkbox(type='checkbox', name='distance', checked, autocomplete='off')
-      label(for='distance') Distance
-    div
+      i.form__icon
+      | Distance
+    label.form__switch
       input#data-time.js-map-display-checkbox(type='checkbox', name='time', checked, autocomplete='off')
-      label(for='time') Time
-    div
+      i.form__icon
+      | Time
+    label.form__switch
       input#data-pace.js-map-display-checkbox(type='checkbox', name='pace', checked, autocomplete='off')
-      label(for='pace') Pace
+      i.form__icon
+      | Pace

@@ -1,0 +1,135 @@
+.form {
+  &__label {
+    display: block;
+    line-height: 1.2;
+    padding: 0.15rem 0;
+  }
+
+  &__input {
+    appearance: none;
+    background: #ffffff;
+    background-image: none;
+    border: 0.1rem solid $color-border-dark;
+    border-radius: $border-radius;
+    color: $color-body-text;
+    display: block;
+    font-size: $font-size;
+    line-height: $line-height;
+    max-width: 100%;
+    outline: none;
+    padding: 0.1rem 0.4rem;
+    position: relative;
+    transition: background 0.2s, border 0.2s, box-shadow 0.2s, color 0.2s;
+    width: 100%;
+
+    &:focus {
+      @include control-shadow();
+      border-color: $color-primary;
+    }
+    &::placeholder {
+      color: $color-gray;
+    }
+  }
+
+  &__select {
+    appearance: none;
+    border: 0.1rem solid $color-border-dark;
+    border-radius: $border-radius;
+    color: inherit;
+    font-size: $font-size;
+    outline: none;
+    padding: 0.1rem 0.4rem;
+    vertical-align: middle;
+    width: 100%;
+    background: #ffffff;
+    line-height: $line-height;
+
+    &:focus {
+      @include control-shadow();
+      border-color: $color-primary;
+    }
+    &::-ms-expand {
+      display: none;
+    }
+
+    &:not([multiple]):not([size]) {
+      background: #ffffff
+        url("data:image/svg+xml;charset=utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%204%205'%3E%3Cpath%20fill='%23667189'%20d='M2%200L0%202h4zm0%205L0%203h4z'/%3E%3C/svg%3E")
+        no-repeat right 0.35rem center / 0.4rem 0.5rem;
+      padding-right: 1.2rem;
+    }
+  }
+
+  &__switch {
+    display: block;
+    line-height: 1.6rem;
+    margin: 0.2rem 0 1rem;
+    min-height: 1.4rem;
+    padding: 0.1rem 0.4rem 0.1rem 1.2rem;
+    position: relative;
+    padding-left: 4rem;
+
+    &:last-child {
+      margin: 0.2rem 0;
+    }
+
+    .form__icon {
+      background: $color-gray;
+      background-clip: padding-box;
+      border-radius: 1rem;
+      height: 1.8rem;
+      left: 0;
+      top: 0;
+      width: 3.2rem;
+      border: 0.1rem solid $color-border-dark;
+      cursor: pointer;
+      display: inline-block;
+      position: absolute;
+      transition: background 0.2s, border 0.2s, box-shadow 0.2s, color 0.2s;
+
+      &::before {
+        background: #ffffff;
+        border-radius: 50%;
+        content: '';
+        display: block;
+        height: 1.6rem;
+        left: 0;
+        position: absolute;
+        top: 0;
+        transition: background 0.2s, border 0.2s, box-shadow 0.2s, color 0.2s,
+          left 0.2s;
+        width: 1.6rem;
+      }
+    }
+
+    input {
+      clip: rect(0, 0, 0, 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      position: absolute;
+      width: 1px;
+
+      &:focus + .form__icon {
+        @include control-shadow();
+        border-color: $color-primary;
+      }
+
+      &:checked + .form__icon {
+        background: $color-primary;
+        border-color: $color-primary;
+      }
+
+      &:checked + .form__icon {
+        &::before {
+          left: 14px;
+        }
+      }
+      &:active + .form__icon {
+        &::before {
+          background: #ffffff;
+        }
+      }
+    }
+  }
+}

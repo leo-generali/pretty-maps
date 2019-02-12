@@ -10,7 +10,7 @@
 
 .map-editor {
   &__form {
-    border-radius: 0.2rem;
+    border-radius: $border-radius;
     box-shadow: $box-shadow-default;
     background-color: #fff;
     padding: 1.6rem;

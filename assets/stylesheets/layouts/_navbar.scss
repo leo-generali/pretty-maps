@@ -40,10 +40,10 @@
     }
 
     &--active {
-      color: $color-body-text;
+      color: $color-primary;
 
       svg {
-        fill: $color-body-text;
+        fill: $color-primary;
       }
     }
 

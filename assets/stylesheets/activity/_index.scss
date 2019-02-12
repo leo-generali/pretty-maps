@@ -9,7 +9,7 @@ $activity-padding-top-size: 0.3rem;
   align-items: center;
 
   &__image {
-    border-radius: 0.2rem;
+    border-radius: $border-radius;
     box-shadow: $box-shadow-default;
   }
 
@@ -44,7 +44,7 @@ $activity-padding-top-size: 0.3rem;
 }
 
 .index-activity {
-  border-radius: 0.2rem;
+  border-radius: $border-radius;
   box-shadow: $box-shadow-default;
   background-color: #fff;
   display: block;
@@ -60,7 +60,7 @@ $activity-padding-top-size: 0.3rem;
   }
 
   &--active {
-    @include activity-border-top($color-strava-orange);
+    @include activity-border-top($color-primary);
     transition: 0.2s;
 
     &:hover {
