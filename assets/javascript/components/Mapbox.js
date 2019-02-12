@@ -1,8 +1,9 @@
 import { $ } from '../modules/bling';
 import { mapConfig } from '../config';
-import { MAPBOX_ACCESS_KEY } from '../modules/secrets';
 
-class Maxbox {
+const token = $('.js-hidden-map').getAttribute('data-mapbox-url');
+
+class Mapbox {
   constructor(bounds, coords, container) {
     this.bounds = bounds;
     this.coords = coords;
@@ -11,7 +12,7 @@ class Maxbox {
     const avgY = (this.bounds.maxY + this.bounds.minY) / 2;
     this.center = [avgX, avgY];
 
-    mapboxgl.accessToken = MAPBOX_ACCESS_KEY;
+    mapboxgl.accessToken = token;
     this.map = new mapboxgl.Map({
       container: container,
       style: 'mapbox://styles/leogenerali/cjrmbdavm16fr2srwjg66llb1',
@@ -59,4 +60,4 @@ class Maxbox {
   }
 }
 
-export default Maxbox;
+export default Mapbox;
