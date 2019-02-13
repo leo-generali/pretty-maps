@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 /*
@@ -29,7 +30,7 @@ const postcss = {
   loader: 'postcss-loader',
   options: {
     plugins() {
-      return [autoprefixer({ browsers: 'last 3 versions' })];
+      return [autoprefixer({ browsers: 'last 3 versions' }), cssnano({})];
     }
   }
 };
