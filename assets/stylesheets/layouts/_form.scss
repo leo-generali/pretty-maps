@@ -73,6 +73,10 @@
       margin: 0.2rem 0;
     }
 
+    &:hover {
+      cursor: pointer;
+    }
+
     .form__icon {
       background: $color-gray;
       background-clip: padding-box;

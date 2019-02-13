@@ -9,9 +9,9 @@ block scripts
 
 block content
   div.map-editor
+    h1.f2.is-bold=activity.name
+    a.strava-link(href=`https://www.strava.com/activities/${activity.id}`, target='_blank') View on Strava
     section.map-editor__form
-      p=activity.name
-      a.strava-link(href=`https://www.strava.com/activities/${activity.id}`, target='_blank') View on Strava
       include partials/map-form
     section.map-editor__map
       include partials/loading-state
