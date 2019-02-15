@@ -5335,6 +5335,11 @@ pinkie@^2.0.0:
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
   integrity sha1-clVrgM+g1IqXToDnckjoDtT3+HA=
 
+pjax@^0.2.7:
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/pjax/-/pjax-0.2.7.tgz#83a86c6f573494ea0a70bd2dddd30ca726498d0c"
+  integrity sha512-XMIfRB0zh8f39uaW+3mNsjky14umW+dqzYkLRj6LzPru8lQ6nVb5GlL2+NC8Zv06h6tC+5XDTLQ8zqd9dR0o+g==
+
 pkg-dir@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/pkg-dir/-/pkg-dir-3.0.0.tgz#2749020f239ed990881b1f71210d51eb6523bea3"

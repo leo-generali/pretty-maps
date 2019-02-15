@@ -1,5 +1,6 @@
-if Object.keys(message).length > 0
-  - const key = Object.keys(message)[0]
-  - const text = message[key][0]
-  div.flash-message(class=`flash-message--${key}`)
-    p.flash-message__text!=text
+div.flash-message-wrapper
+  if Object.keys(message).length > 0
+    - const key = Object.keys(message)[0]
+    - const text = message[key][0]
+    div.flash-message(class=`flash-message--${key}`)
+      p.flash-message__text!=text
