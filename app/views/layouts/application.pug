@@ -11,5 +11,6 @@ html(lang="en")
     include partials/navbar
     main.main(role='main')
       block content
-    block scripts
-    script(src="/dist/App.bundle.js")
+    div.js-pjax-scripts
+      block scripts
+      script(src="/dist/App.bundle.js")

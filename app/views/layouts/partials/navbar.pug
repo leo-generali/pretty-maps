@@ -1,5 +1,5 @@
 mixin nav-link(path, text, icon)
-  a.navbar__link(href=`${path}`, class=`navbar__link--${text.replace(/\s+/g, '-').toLowerCase()} ${h.onCurrentNav(currentPath, path, text)}`)
+  a.js-pjax-link.navbar__link(href=`${path}`, class=`navbar__link--${text.replace(/\s+/g, '-').toLowerCase()} ${h.onCurrentNav(currentPath, path, text)}`)
     != h.svg(`icons/${icon}`)
     =text
 

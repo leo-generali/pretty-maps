@@ -1,11 +1,11 @@
 extends ../../layouts/application
 
 block styles
-  link(rel="stylesheet", href="https://api.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.css")
+  link(rel='stylesheet', href='https://api.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.css')
 
 block scripts
-  script(src="https://api.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.js")
-  script(src="/dist/MapEditor.bundle.js")
+  script(src='https://api.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.js')
+  script(src='/dist/MapEditor.bundle.js')
 
 block content
   div.map-editor
@@ -20,3 +20,4 @@ block content
         img.js-map-img.map-container__map-layer(src="", alt=`${activity.name}`)
       a.js-map-download-link(href="", download="map.png") Download ↓
       include partials/hidden-map
+
