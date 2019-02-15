@@ -22,7 +22,7 @@
   }
 
   &--info {
-    @include flash-border($color-navy);
+    @include flash-border($color-body-text);
   }
 
   &--error {

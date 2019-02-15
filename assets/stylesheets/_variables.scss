@@ -2,22 +2,17 @@
 
 // Primary Colorys
 $color-body-text: #345;
-$color-gray: lighten($color-body-text, 55%);
+$color-gray: lighten($color-body-text, 30%);
 
 $color-primary: #5755d9;
-$color-primary-dark: darken($color-primary, 3%);
-$color-primary-light: lighten($color-primary, 3%);
 $color-secondary: lighten($color-primary, 37.5%);
-$color-secondary-dark: darken($color-secondary, 3%);
-$color-secondary-light: lighten($color-secondary, 3%);
 
 $color-border: lighten($color-body-text, 65%);
 $color-border-dark: darken($color-border, 10%);
 $color-border-light: lighten($color-border, 8%);
 
 // Secondary Colors
-$color-red: #ff4136;
-$color-navy: #001f3f;
+$color-red: #eb6872;
 $color-green: #3d9970;
 $color-strava-orange: #fc4c02;
 
