@@ -14,9 +14,6 @@ const router = require('./app/routes/index');
 app.use(session);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
-app.use(passport.initialize());
-app.use(passport.session());
-app.use('/', router);
 
 app.use((req, res, next) => {
   h = helpers;
@@ -24,6 +21,10 @@ app.use((req, res, next) => {
   message = req.flash();
   next();
 });
+
+app.use(passport.initialize());
+app.use(passport.session());
+app.use('/', router);
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'app', 'views'));

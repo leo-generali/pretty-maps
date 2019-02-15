@@ -9,6 +9,7 @@ router.get('/', pagesController.index);
 router.get('/login', pagesController.login);
 router.get('/logout', pagesController.logout);
 router.get('/about', pagesController.about);
+router.get('/roadmap', pagesController.roadmap);
 router.get('/failed', pagesController.failedLogin);
 
 router.get('/activities', ensureAuthenticated, activityController.index);
