@@ -1,4 +1,5 @@
 require('dotenv').config();
+
 const express = require('express');
 const path = require('path');
 const app = express();
@@ -6,14 +7,16 @@ const flash = require('connect-flash');
 
 const session = require('./config/session');
 const passport = require('./config/passport');
+const helpers = require('./config/helpers');
 
-const router = require('./routes/index');
-const helpers = require('./helpers');
+const router = require('./app/routes/index');
 
 app.use(session);
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+app.use('/', router);
 
 app.use((req, res, next) => {
   h = helpers;
@@ -23,11 +26,7 @@ app.use((req, res, next) => {
 });
 
 app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, 'views'));
-
-app.use(passport.initialize());
-app.use(passport.session());
-app.use('/', router);
+app.set('views', path.join(__dirname, 'app', 'views'));
 
 app.get(
   '/auth/strava',
