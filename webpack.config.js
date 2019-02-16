@@ -4,6 +4,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const AssetsPlugin = require('assets-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 /*
   webpack sees every file as a module.
@@ -41,6 +43,7 @@ const styles = {
   use: [
     {
       loader: MiniCssExtractPlugin.loader
+      // options:
     },
     'css-loader?sourceMap',
     postcss,
@@ -70,7 +73,7 @@ const config = {
     path: path.resolve(__dirname, 'public', 'dist'),
     // we can use "substitutions" in file names like [name] and [hash]
     // name will be `App` because that is what we used above in our entry
-    filename: '[name].bundle.js'
+    filename: '[name]-[hash].bundle.js'
   },
 
   // remember we said webpack sees everthing as modules and how different loaders are responsible for different file types? Here is is where we implement them. Pass it the rules for our JS and our styles
@@ -81,7 +84,9 @@ const config = {
   // plugins: [uglify],
   plugins: [
     // here is where we tell it to output our css to a separate file
-    new MiniCssExtractPlugin('style.css')
+    new CleanWebpackPlugin(['public/dist/*']),
+    new AssetsPlugin({ path: path.join(__dirname, 'config') }),
+    new MiniCssExtractPlugin({ filename: '[name]-[contenthash].css' })
   ]
 };
 // webpack is cranky about some packages using a soon to be deprecated API. shhhhhhh

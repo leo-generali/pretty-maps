@@ -1,11 +1,11 @@
-html(lang="en")
+html(lang='en')
   head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
     title Prefontaine
     block styles
-    link(href="/dist/App.css", text="text/css", rel="stylesheet")
+    link(href=h.assetFor('App.css'), text='text/css', rel='stylesheet')
   body
     include partials/flash
     include partials/navbar
@@ -13,4 +13,4 @@ html(lang="en")
       block content
     div.js-pjax-scripts
       block scripts
-      script(src="/dist/App.bundle.js")
+      script(src=h.assetFor('App.js'))

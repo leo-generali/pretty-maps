@@ -4,7 +4,6 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const flash = require('connect-flash');
-
 const session = require('./config/session');
 const passport = require('./config/passport');
 const helpers = require('./config/helpers');
@@ -12,7 +11,7 @@ const helpers = require('./config/helpers');
 const router = require('./app/routes/index');
 
 app.use(session);
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'), { maxAge: '30 days' }));
 app.use(flash());
 
 app.use((req, res, next) => {
