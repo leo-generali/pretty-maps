@@ -79,7 +79,8 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
-public/dist
+public/dist/
+config/webpack-assets.json
 
 sessions
 
