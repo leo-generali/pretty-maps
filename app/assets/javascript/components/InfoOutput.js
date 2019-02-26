@@ -17,6 +17,7 @@ class InfoOutput extends Component {
   }
 
   render() {
+    console.log('rendering the map');
     this.clearRect();
     this.renderActivityName();
 

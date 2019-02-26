@@ -24,11 +24,12 @@ class Store {
 
         console.log(`statechange: ${key}, ${value}`);
 
-        self.events.publish('stateChange', self.state);
-
         if (self.status !== 'mutation') {
-          console.warn(`You should use a mutation to set ${key}`);
+          console.warn(`Not rendering ${key} change`);
+          return true;
         }
+
+        self.events.publish('stateChange', self.state);
 
         self.status = 'resting';
 
@@ -62,7 +63,7 @@ class Store {
     const self = this;
 
     if (typeof self.mutations[mutationKey] !== 'function') {
-      console.log(`Mutation "${mutationKey}" doesn't exist`);
+      console.log(`Mutation '${mutationKey}' doesn't exist`);
       return false;
     }
 
