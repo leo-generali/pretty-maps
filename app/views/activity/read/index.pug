@@ -9,15 +9,15 @@ block scripts
 
 block content
   div.map-editor
-    h1.f2.is-bold=activity.name
-    a.strava-link(href=`https://www.strava.com/activities/${activity.id}`, target='_blank') View on Strava
+    h1.f2.is-bold.map-editor__title=activity.name
     section.map-editor__form
       include partials/map-form
     section.map-editor__map
+      include partials/hidden-map
       include partials/loading-state
       div.js-map-container.map-container
         canvas.js-map-canvas-layer.map-container__canvas-layer
         img.js-map-img.map-container__map-layer(src="", alt=`${activity.name}`)
-      a.js-map-download-link(href="", download="map.png") Download ↓
-      include partials/hidden-map
+    a.strava-link(href=`https://www.strava.com/activities/${activity.id}`, target='_blank') View on Strava
+    a.js-map-download-link.map-download(href="", download="map.png") Download ↓
 

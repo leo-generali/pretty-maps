@@ -5,6 +5,13 @@
   @media (min-width: $navbar-change-width) {
     grid-template-columns: 1fr 1fr;
   }
+
+  &__grid-child {
+    &--title {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+  }
 }
 
 .mapbox-hidden {
@@ -18,6 +25,31 @@
 }
 
 .map-editor {
+  display: grid;
+  grid-gap: 1.6rem;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    't'
+    '.';
+
+  @media (min-width: $navbar-change-width) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      't t'
+      '. .';
+  }
+
+  &__title {
+    grid-area: t;
+  }
+
+  &__map {
+    border-radius: $border-radius;
+    box-shadow: $box-shadow-default;
+    background-color: #fff;
+    overflow: hidden;
+  }
+
   &__form {
     border-radius: $border-radius;
     box-shadow: $box-shadow-default;
@@ -28,7 +60,6 @@
 
 .map-container {
   width: 100%;
-  max-width: 500px;
   height: auto;
   position: relative;
   display: none;
@@ -46,15 +77,53 @@
 }
 
 .map-loading-state {
-  width: 500px;
-  height: 500px;
+  position: relative;
+  width: 100%;
+  height: 100%;
   background-color: #f2f2f2;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-bottom: 50%;
+  padding-top: 50%;
+
+  &__inner {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 7rem;
+    justify-content: space-between;
+  }
 
   &__text {
     flex-direction: column;
+  }
+}
+
+.map-download {
+  background-color: $color-primary;
+  text-decoration: none;
+  color: #fff;
+  padding: 1rem;
+  display: block;
+  border-radius: $border-radius;
+  transition: $transition-fast;
+  text-align: center;
+
+  &:active {
+    background-color: darken($color-primary, 2%);
+    transform: translateY(0.1rem);
+  }
+
+  @media (min-width: $navbar-change-width) {
+    display: inline-block;
+
+    &:hover {
+      transform: translateY(-0.2rem);
+      box-shadow: $box-shadow-default;
+      background-color: lighten($color-primary, 2%);
+    }
   }
 }
 

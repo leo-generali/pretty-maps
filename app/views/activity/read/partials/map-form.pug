@@ -1,13 +1,14 @@
 form.form.map-form
-  div.map-form__grid-child
+  div.map-form__grid-child.map-form__grid-child--title
     div.map-form__title
       label.form__label(for='activity-name') Title
       input#activity-name.js-activity-name-input.form__input(type='text', name='activity-name', value=activity.name)
+  div.map-form__grid-child
     div.map-form__unit
-      label.form__label(for='distance-unit') Unit/Measurement:
-      select#distance-unit.js-unit-select.form__select(autocomplete='off')
-        option(selected) Miles
-        option Kilometers
+    label.form__label(for='distance-unit') Unit/Measurement:
+    select#distance-unit.js-unit-select.form__select(autocomplete='off')
+      option(selected) Miles
+      option Kilometers
   div.map-form__grid-child
     p Show/Hide Data:
     label.form__switch

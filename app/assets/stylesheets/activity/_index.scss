@@ -82,7 +82,7 @@ $activity-padding-top-size: 0.3rem;
 
   &--active {
     @include activity-border-top($color-primary);
-    transition: 0.2s;
+    transition: $transition-medium;
 
     &:hover {
       transform: translateY(-0.2rem);

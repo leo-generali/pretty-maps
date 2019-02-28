@@ -32,6 +32,8 @@ $line-height: 1.5;
 
 // Element Styling
 $border-radius: 0.2rem;
+$transition-fast: 0.1s;
+$transition-medium: 0.2s;
 
 // Mixins
 @mixin control-shadow($color: $color-primary) {
