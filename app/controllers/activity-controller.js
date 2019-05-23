@@ -1,4 +1,6 @@
 const ActivityGroup = require('../models/activity-group');
+const UserProfile = require('../models/user-profile');
+
 const getBounds = require('getboundingbox');
 const strava = require('strava-v3');
 const polyline = require('@mapbox/polyline');
@@ -11,10 +13,12 @@ exports.index = (req, res) => {
     if (!err) {
       const activityGroup = new ActivityGroup(payload);
       const activitiesByWeek = activityGroup.activitiesByWeek();
+      const user = new UserProfile(req.user)
+
       res.render('activity/index/index', {
         activitiesByWeek,
         activities: payload,
-        user: req.user
+        user: user
       });
     } else {
       errorLoadingData(req, res);

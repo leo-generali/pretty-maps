@@ -1,0 +1,16 @@
+mixin profile(photoSrc, displayName, city)
+  div.profile
+    img.profile__image.src(src=`${photoSrc}`, alt=`Photo of ${displayName}`)
+    div.profile__text
+      p.is-bold.f2=displayName
+      p.f3=city
+
+mixin activity(activity)
+  p.index-activity__name=activity.name
+  p.index-activity__workout-label Date:
+  p.index-activity__date=activity.date('dddd, MMMM Do YYYY')
+  if activity.workoutType()
+    p.index-activity__workout-label Workout Type:
+    p.index-activity__workout-tag(class=`index-activity__workout-tag--${activity.workoutType().toLowerCase()}`)=activity.workoutType()
+  unless activity.hasGPS()
+    p.index-activity__workout-label No GPS data available

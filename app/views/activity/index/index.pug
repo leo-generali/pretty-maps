@@ -1,21 +1,8 @@
 extends ../../layouts/application
-
-mixin activity(activity)
-  p.index-activity__name=activity.name
-  p.index-activity__workout-label Date:
-  p.index-activity__date=activity.date('dddd, MMMM Do YYYY')
-  if activity.workoutType()
-    p.index-activity__workout-label Workout Type:
-    p.index-activity__workout-tag(class=`index-activity__workout-tag--${activity.workoutType().toLowerCase()}`)=activity.workoutType()
-  unless activity.hasGPS()
-    p.index-activity__workout-label No GPS data available
+include mixins
 
 block content
-  div.profile
-    img.profile__image.src(src=`${user.photos[0].value}`, alt=`Photo of ${user.displayName}`)
-    div.profile__text
-      p.is-bold.f2=user.displayName
-      p.f3=user._json.city
+  +profile(user.photoSrc, user.displayName, user.city)
   div.activities-wrapper
     each activityGroup in Object.values(activitiesByWeek)
       - const startOfWeek = activityGroup[0].getStartOfWeek().format('dddd MMMM, D')
