@@ -18,7 +18,35 @@ $activity-padding-top-size: 0.3rem;
   }
 }
 
+.calendar-header {
+  display: flex;
+
+  &__day {
+    flex-grow: 1;
+    text-align: center;
+  }
+}
+
+.calendar-week {
+  // display: flex;
+}
+
+.calendar-day {
+  // flex-grow: 1;
+  // display: flex;
+  // flex-direction: column;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow-default;
+  width: 100% / 7;
+}
+
 .activities-wrapper {
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+
   &__week {
     margin-bottom: 3rem;
 

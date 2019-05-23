@@ -9,7 +9,7 @@
   z-index: 1000;
 
   &__inner {
-    max-width: 1200px;
+    max-width: $max-width;
     margin: auto;
     display: flex;
     align-items: center;
