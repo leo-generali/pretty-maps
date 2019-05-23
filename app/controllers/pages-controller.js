@@ -1,4 +1,5 @@
 exports.index = (req, res) => {
+  if (req.user) { res.redirect('/activities') }
   res.render('pages/home/index', { user: req.user });
 };
 
