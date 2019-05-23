@@ -4,8 +4,9 @@ const groupBy = require('lodash.groupby');
 class ActivityGrouper {
   static byWeek(activities) {
     const allActivities = activities.map((activity) => new Activity(activity));
-    const groupedResults = groupBy(allActivities, (result) =>
-      result.getStartOfWeek()
+    const groupedResults = groupBy(
+      allActivities,
+      (result) => result.startOfWeek
     );
     return groupedResults;
   }

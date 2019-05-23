@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const pagesController = require('../controllers/pages-controller');
-const activityController = require('../controllers/activity-controller');
+const activityController = require('../controllers/activity');
 const { ensureAuthenticated } = require('../controllers/redirects-controller');
 
 router.get('/', pagesController.index);

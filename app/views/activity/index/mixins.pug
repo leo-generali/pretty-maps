@@ -8,11 +8,11 @@ mixin profile(photoSrc, displayName, city)
 mixin activity(activity)
   p.index-activity__name=activity.name
   p.index-activity__workout-label Date:
-  p.index-activity__date=activity.date('dddd, MMMM Do YYYY')
-  if activity.workoutType()
+  p.index-activity__date=activity.date
+  if activity.workoutType
     p.index-activity__workout-label Workout Type:
-    p.index-activity__workout-tag(class=`index-activity__workout-tag--${activity.workoutType().toLowerCase()}`)=activity.workoutType()
-  unless activity.hasGPS()
+    p.index-activity__workout-tag(class=`index-activity__workout-tag--${activity.workoutType.toLowerCase()}`)=activity.workoutType
+  unless activity.hasGPS
     p.index-activity__workout-label No GPS data available
 
 mixin calendarHeader(dates)

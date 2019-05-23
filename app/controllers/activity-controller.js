@@ -1,5 +1,5 @@
-const ActivityGroup = require('../models/activity-group');
 const UserProfile = require('../models/user-profile');
+const Activity = require('../models/activity');
 const TrainingCalendar = require('../models/training-calendar');
 
 const getBounds = require('getboundingbox');
@@ -12,17 +12,13 @@ exports.index = (req, res) => {
 
   strava.athlete.listActivities({ access_token: token }, (err, payload) => {
     if (!err) {
-      const activityGroup = new ActivityGroup(payload);
-      const activitiesByWeek = activityGroup.activitiesByWeek();
       const user = new UserProfile(req.user);
-
       const trainingCalendar = {
         header: TrainingCalendar.header(),
         activities: TrainingCalendar.activitiesOrganizedByWeek(payload)
       };
 
       res.render('activity/index/index', {
-        activitiesByWeek,
         user,
         trainingCalendar
       });
@@ -40,12 +36,13 @@ exports.read = (req, res) => {
     { id: activityId, access_token: token },
     (err, payload) => {
       if (!err) {
+        const activity = new Activity(payload);
         const geoJSON = polyline.toGeoJSON(payload.map.polyline);
         const bounds = getBounds(geoJSON.coordinates);
 
         res.render('activity/read/index', {
           user: req.user,
-          activity: payload,
+          activity,
           coordinates: geoJSON.coordinates,
           bounds: bounds
         });

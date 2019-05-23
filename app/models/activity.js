@@ -8,31 +8,36 @@ const ACTIVITY_TYPES = {
 
 class Activity {
   constructor(props) {
-    Object.assign(this, { ...props });
+    this._id = props.id;
+    this._polyline = props.map.summary_polyline;
+    this._workoutType = ACTIVITY_TYPES[props.workout_type] || '';
+    this._dayOfWeek = ACTIVITY_MAPPINGS[new Date(props.start_date).getDay()];
+    this._date = moment(props.start_date).format('dddd, MMMM Do YYYY');
+    this._startOfWeek = moment(props.start_date_local).startOf('isoWeek');
   }
 
   get dayOfWeek() {
-    return ACTIVITY_MAPPINGS[new Date(this.start_date).getDay()];
+    return this._dayOfWeek;
   }
 
-  getStartOfWeek() {
-    return moment(this.start_date_local).startOf('isoWeek');
+  get startOfWeek() {
+    return this._startOfWeek;
   }
 
-  getEndOfWeek() {
-    return moment(this.start_date_local).endOf('isoWeek');
+  get date() {
+    return this._date;
   }
 
-  date(format) {
-    return moment(this.start_date).format(format);
+  get hasGPS() {
+    return this._polyline !== null;
   }
 
-  hasGPS() {
-    return this.map.summary_polyline !== null;
+  get workoutType() {
+    return this._workoutType;
   }
 
-  workoutType() {
-    return ACTIVITY_TYPES[this.workout_type] || '';
+  get id() {
+    return this._id;
   }
 }
 

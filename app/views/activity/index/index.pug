@@ -10,7 +10,7 @@ block content
         div.calendar-day
           if day.activities.length > 0
             each activity in day.activities
-              if activity.hasGPS()
+              if activity.hasGPS
                 a.js-pjax-link.index-activity.index-activity--active(href=`activities/${activity.id}`)
                   +activity(activity)
               else
