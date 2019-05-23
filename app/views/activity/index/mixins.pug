@@ -14,3 +14,7 @@ mixin activity(activity)
     p.index-activity__workout-tag(class=`index-activity__workout-tag--${activity.workoutType().toLowerCase()}`)=activity.workoutType()
   unless activity.hasGPS()
     p.index-activity__workout-label No GPS data available
+
+mixin calendarHeader(dates)
+  each date in dates
+    p #{date}

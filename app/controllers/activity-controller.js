@@ -1,5 +1,6 @@
 const ActivityGroup = require('../models/activity-group');
 const UserProfile = require('../models/user-profile');
+const TrainingCalendar = require('../models/training-calendar');
 
 const getBounds = require('getboundingbox');
 const strava = require('strava-v3');
@@ -13,12 +14,17 @@ exports.index = (req, res) => {
     if (!err) {
       const activityGroup = new ActivityGroup(payload);
       const activitiesByWeek = activityGroup.activitiesByWeek();
-      const user = new UserProfile(req.user)
+      const user = new UserProfile(req.user);
+
+      const trainingCalendar = {
+        header: TrainingCalendar.header(),
+        activities: TrainingCalendar.activitiesOrganizedByWeek(payload)
+      };
 
       res.render('activity/index/index', {
         activitiesByWeek,
-        activities: payload,
-        user: user
+        user,
+        trainingCalendar
       });
     } else {
       errorLoadingData(req, res);
