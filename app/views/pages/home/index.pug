@@ -2,6 +2,12 @@ extends ../../layouts/application
 
 block content
   unless user
-    p Welcome! Please log in yee haw!
+    div.home-page
+      section.home-page__text
+        h1.f1 You work hard - you deserve to brag.
+        h2.f3 Create beautiful images from your Strava activities and share them online for your friends to see.
+      section.home-page__illustration
+        != h.svg(`undraw/finish-line`)
+
   else
     p Hello #{user.displayName}

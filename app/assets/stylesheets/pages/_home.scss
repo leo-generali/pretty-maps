@@ -1,0 +1,22 @@
+.home-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 85%;
+  max-width: $navbar-change-width;
+  margin: 0 auto;
+
+  &__text {
+    // width: 50%;
+    line-height: 1.25;
+  }
+
+  &__illustration {
+    // width: 50%;
+
+    svg {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
