@@ -1,26 +1,24 @@
 const UserProfile = require('../../models/user-profile');
 const TrainingCalendar = require('../../models/training-calendar');
+const StravaInterface = require('../../models/strava-interface');
 
-const strava = require('strava-v3');
 const { errorLoadingData } = require('../redirects-controller');
 
-exports.index = (req, res) => {
+exports.index = async (req, res) => {
   const { id, token } = req.user;
+  const { err, activities } = await StravaInterface.getActivities(token);
 
-  strava.athlete.listActivities({ access_token: token }, (err, payload) => {
-    if (!err) {
-      const user = new UserProfile(req.user);
-      const trainingCalendar = {
-        header: TrainingCalendar.header(),
-        activities: TrainingCalendar.activitiesOrganizedByWeek(payload)
-      };
+  // If there's an error send bail out and show error message!
+  if (err) errorLoadingData(req, res);
 
-      res.render('activity/index/index', {
-        user,
-        trainingCalendar
-      });
-    } else {
-      errorLoadingData(req, res);
-    }
+  const user = new UserProfile(req.user);
+  const trainingCalendar = {
+    header: TrainingCalendar.header(),
+    activities: TrainingCalendar.activitiesOrganizedByWeek(activities)
+  };
+
+  res.render('activity/index/index', {
+    user,
+    trainingCalendar
   });
 };
