@@ -31,7 +31,7 @@
     "passport": "^0.4.0",
     "passport-strava-oauth2": "^0.1.3",
     "pjax": "^0.2.7",
-    "pug": "^2.0.3",
+    "pug": "^3.0.1",
     "strava-v3": "^1.14.0"
   },
   "devDependencies": {
