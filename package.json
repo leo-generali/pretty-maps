@@ -26,7 +26,7 @@
     "getboundingbox": "^1.0.0",
     "lodash.groupby": "^4.6.0",
     "mapbox-gl": "^0.53.0-beta.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "nprogress": "^0.2.0",
     "passport": "^0.4.0",
     "passport-strava-oauth2": "^0.1.3",
